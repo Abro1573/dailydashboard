@@ -1,0 +1,2367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no">
+
+<title>Home Assistant</title>
+
+
+<style>
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background: #101010;
+    color: #ffffff;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        Arial,
+        sans-serif;
+}
+
+
+button {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   APP / PAGE SYSTEM
+   ========================================================= */
+
+#app {
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+
+#pages {
+
+    display: flex;
+
+    width: 400%;
+    height: 100%;
+
+    transform: translateX(0);
+
+    transition:
+        transform 0.35s ease;
+}
+
+
+.page {
+
+    width: 25%;
+    height: 100%;
+
+    flex-shrink: 0;
+
+    padding:
+        35px
+        25px
+        90px
+        25px;
+
+    overflow-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+
+.page-content {
+
+    width: 100%;
+    max-width: 600px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HOME PAGE
+   ========================================================= */
+
+#home {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+.home-inner {
+
+    width: 100%;
+}
+
+
+.time {
+
+    font-size: 68px;
+
+    line-height: 1;
+
+    font-weight: 300;
+
+    letter-spacing: -3px;
+}
+
+
+.date {
+
+    margin-top: 15px;
+
+    font-size: 20px;
+
+    color: #999999;
+}
+
+
+.greeting {
+
+    margin-top: 45px;
+
+    font-size: 27px;
+
+    font-weight: 400;
+}
+
+
+.home-weather {
+
+    margin-top: 25px;
+
+    font-size: 19px;
+
+    color: #aaaaaa;
+}
+
+
+/* =========================================================
+   GENERAL
+   ========================================================= */
+
+.page-title {
+
+    font-size: 36px;
+
+    font-weight: 400;
+
+    margin-bottom: 25px;
+}
+
+
+.card {
+
+    background: #1b1b1b;
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+    margin-bottom: 15px;
+}
+
+
+.large-number {
+
+    font-size: 54px;
+
+    font-weight: 300;
+}
+
+
+.secondary {
+
+    color: #999999;
+
+    font-size: 17px;
+}
+
+
+.divider {
+
+    height: 1px;
+
+    background: #2c2c2c;
+
+    margin: 18px 0;
+}
+
+
+/* =========================================================
+   WEATHER
+   ========================================================= */
+
+.weather-main {
+
+    text-align: center;
+
+    padding:
+        25px
+        0;
+}
+
+
+.weather-temp {
+
+    font-size: 70px;
+
+    font-weight: 300;
+}
+
+
+.weather-condition {
+
+    font-size: 24px;
+
+    margin-top: 8px;
+}
+
+
+.weather-feels {
+
+    color: #999999;
+
+    margin-top: 8px;
+}
+
+
+.weather-grid {
+
+    display: flex;
+
+    gap: 10px;
+}
+
+
+.weather-stat {
+
+    flex: 1;
+
+    background: #1b1b1b;
+
+    border-radius: 15px;
+
+    padding:
+        18px
+        10px;
+
+    text-align: center;
+}
+
+
+.stat-label {
+
+    color: #888888;
+
+    font-size: 14px;
+
+    margin-bottom: 8px;
+}
+
+
+.stat-value {
+
+    font-size: 20px;
+}
+
+
+.hour-row {
+
+    display: flex;
+
+    overflow-x: auto;
+
+    gap: 10px;
+
+    padding-bottom: 5px;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+
+.hour {
+
+    min-width: 80px;
+
+    background: #1b1b1b;
+
+    border-radius: 14px;
+
+    padding:
+        14px
+        8px;
+
+    text-align: center;
+}
+
+
+.hour-time {
+
+    color: #888888;
+
+    font-size: 13px;
+}
+
+
+.hour-temp {
+
+    font-size: 21px;
+
+    margin:
+        8px
+        0;
+}
+
+
+.hour-rain {
+
+    color: #777777;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   CALCULATOR
+   ========================================================= */
+
+.calculator {
+
+    width: 100%;
+
+    max-width: 400px;
+
+    margin: 0 auto;
+}
+
+
+.calc-display {
+
+    width: 100%;
+
+    height: 85px;
+
+    background: #181818;
+
+    border-radius: 15px;
+
+    margin-bottom: 12px;
+
+    padding: 15px;
+
+    text-align: right;
+
+    font-size: 40px;
+
+    overflow: hidden;
+}
+
+
+.calc-buttons {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 9px;
+}
+
+
+.calc-button {
+
+    height: 65px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: #242424;
+
+    color: white;
+
+    font-size: 24px;
+
+    cursor: pointer;
+}
+
+
+.calc-button:hover {
+
+    background: #303030;
+}
+
+
+.calc-button:active {
+
+    background: #3a3a3a;
+
+    transform: scale(0.97);
+}
+
+
+.calc-button.operator {
+
+    background: #303030;
+}
+
+
+.calc-button.equals {
+
+    background: #ffffff;
+
+    color: #111111;
+}
+
+
+.calc-button.clear {
+
+    background: #333333;
+}
+
+
+/* =========================================================
+   ASSISTANT
+   ========================================================= */
+
+.assistant {
+
+    text-align: center;
+
+    margin-top: 80px;
+}
+
+
+.assistant-circle {
+
+    width: 150px;
+    height: 150px;
+
+    border-radius: 50%;
+
+    background: #1c1c1c;
+
+    margin:
+        0
+        auto
+        30px
+        auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+
+    color: #888888;
+}
+
+
+.assistant-text {
+
+    font-size: 25px;
+}
+
+
+.assistant-sub {
+
+    margin-top: 12px;
+
+    color: #777777;
+
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   BOTTOM NAVIGATION
+   ========================================================= */
+
+#navigation {
+
+    position: fixed;
+
+    bottom: 15px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    gap: 6px;
+
+    max-width:
+        calc(100% - 30px);
+
+    padding: 6px;
+
+    background:
+        rgba(25, 25, 25, 0.95);
+
+    border-radius: 14px;
+
+    z-index: 10;
+
+    overflow-x: auto;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+}
+
+
+#navigation::-webkit-scrollbar {
+
+    display: none;
+}
+
+
+.nav-button {
+
+    flex-shrink: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #777777;
+
+    padding:
+        9px
+        13px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    font-size: 14px;
+
+    white-space: nowrap;
+}
+
+
+.nav-button:hover {
+
+    background: #292929;
+
+    color: #cccccc;
+}
+
+
+.nav-button:active {
+
+    transform:
+        scale(0.96);
+}
+
+
+.nav-button.active {
+
+    background: #ffffff;
+
+    color: #111111;
+}
+
+
+.nav-dot {
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: currentColor;
+}
+
+
+.nav-label {
+
+    display: inline-block;
+}
+
+
+/* =========================================================
+   SMALL SCREEN ADJUSTMENTS
+   ========================================================= */
+
+@media (max-width: 500px) {
+
+    .time {
+
+        font-size: 55px;
+    }
+
+
+    .greeting {
+
+        font-size: 23px;
+    }
+
+
+    .page-title {
+
+        font-size: 30px;
+    }
+
+
+    .weather-temp {
+
+        font-size: 60px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div id="app">
+
+
+    <!-- =====================================================
+         PAGE CONTAINER
+         ===================================================== -->
+
+    <div id="pages">
+
+
+        <!-- =================================================
+             PAGE 1 — HOME
+             ================================================= -->
+
+        <section
+            class="page"
+            id="home"
+        >
+
+            <div class="home-inner">
+
+
+                <div
+                    class="time"
+                    id="time"
+                >
+                    12:00 PM
+                </div>
+
+
+                <div
+                    class="date"
+                    id="date"
+                >
+                    Loading...
+                </div>
+
+
+                <div
+                    class="greeting"
+                    id="greeting"
+                >
+                    Hello.
+                </div>
+
+
+                <div
+                    class="home-weather"
+                    id="homeWeather"
+                >
+                    Loading weather...
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PAGE 2 — WEATHER
+             ================================================= -->
+
+        <section class="page">
+
+
+            <div class="page-content">
+
+
+                <div class="page-title">
+                    Weather
+                </div>
+
+
+                <!-- Current weather -->
+
+                <div class="card weather-main">
+
+
+                    <div
+                        class="weather-temp"
+                        id="weatherTemp"
+                    >
+                        --
+                    </div>
+
+
+                    <div
+                        class="weather-condition"
+                        id="weatherCondition"
+                    >
+                        Loading...
+                    </div>
+
+
+                    <div
+                        class="weather-feels"
+                        id="weatherFeels"
+                    >
+                        --
+                    </div>
+
+
+                </div>
+
+
+                <!-- Weather statistics -->
+
+                <div class="weather-grid">
+
+
+                    <div class="weather-stat">
+
+                        <div class="stat-label">
+                            Rain
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="rainChance"
+                        >
+                            --
+                        </div>
+
+                    </div>
+
+
+                    <div class="weather-stat">
+
+                        <div class="stat-label">
+                            Wind
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="wind"
+                        >
+                            --
+                        </div>
+
+                    </div>
+
+
+                    <div class="weather-stat">
+
+                        <div class="stat-label">
+                            High
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="high"
+                        >
+                            --
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- Hourly forecast -->
+
+                <div
+                    class="card"
+                    style="margin-top:15px"
+                >
+
+
+                    <div class="secondary">
+                        Next few hours
+                    </div>
+
+
+                    <div class="divider"></div>
+
+
+                    <div
+                        class="hour-row"
+                        id="hourlyWeather"
+                    >
+                        Loading...
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PAGE 3 — CALCULATOR
+             ================================================= -->
+
+        <section class="page">
+
+
+            <div class="page-content">
+
+
+                <div class="page-title">
+                    Calculator
+                </div>
+
+
+                <div class="calculator">
+
+
+                    <div
+                        class="calc-display"
+                        id="calcDisplay"
+                    >
+                        0
+                    </div>
+
+
+                    <div class="calc-buttons">
+
+
+                        <button
+                            class="calc-button clear"
+                            onclick="clearCalc()"
+                        >
+                            C
+                        </button>
+
+
+                        <button
+                            class="calc-button"
+                            onclick="backspace()"
+                        >
+                            DEL
+                        </button>
+
+
+                        <button
+                            class="calc-button operator"
+                            onclick="inputOperator('%')"
+                        >
+                            %
+                        </button>
+
+
+                        <button
+                            class="calc-button operator"
+                            onclick="inputOperator('/')"
+                        >
+                            ÷
+                        </button>
+
+
+                        <button
+                            class="calc-button"
+                            onclick="inputNumber('7')"
+                        >
+                            7
+                        </button>
+
+
+                        <button
+                            class="calc-button"
+                            onclick="inputNumber('8')"
+                        >
+                            8
+                        </button>
+
+
+                        <button
+                            class="calc-button"
+                            onclick="inputNumber('9')"
+                        >
+                            9
+                        </button>
+
+
+                        <button
+                            class="calc-button operator"
+                            onclick="inputOperator('*')"
+                        >
+                            ×
+                        </button>
+
+
+                        <button
+                            class="calc-button"
+                            onclick="inputNumber('4')"
+                        >
+                            4
+                        </button>
+
+
+                        <button
+                            class="calc-button"
+                            onclick="inputNumber('5')"
+                        >
+                            5
+                        </button>
+
+
+                        <button
+                            class="calc-button"
+                            onclick="inputNumber('6')"
+                        >
+                            6
+                        </button>
+
+
+                        <button
+                            class="calc-button operator"
+                            onclick="inputOperator('-')"
+                        >
+                            −
+                        </button>
+
+
+                        <button
+                            class="calc-button"
+                            onclick="inputNumber('1')"
+                        >
+                            1
+                        </button>
+
+
+                        <button
+                            class="calc-button"
+                            onclick="inputNumber('2')"
+                        >
+                            2
+                        </button>
+
+
+                        <button
+                            class="calc-button"
+                            onclick="inputNumber('3')"
+                        >
+                            3
+                        </button>
+
+
+                        <button
+                            class="calc-button operator"
+                            onclick="inputOperator('+')"
+                        >
+                            +
+                        </button>
+
+
+                        <button
+                            class="calc-button"
+                            onclick="inputNumber('0')"
+                        >
+                            0
+                        </button>
+
+
+                        <button
+                            class="calc-button"
+                            onclick="inputDecimal()"
+                        >
+                            .
+                        </button>
+
+
+                        <button
+                            class="calc-button equals"
+                            style="grid-column: span 2"
+                            onclick="calculate()"
+                        >
+                            =
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PAGE 4 — ASSISTANT
+             ================================================= -->
+
+        <section class="page">
+
+
+            <div class="page-content">
+
+
+                <div class="page-title">
+                    Assistant
+                </div>
+
+
+                <div class="assistant">
+
+
+                    <div class="assistant-circle">
+                        Ready
+                    </div>
+
+
+                    <div class="assistant-text">
+                        Your assistant is ready.
+                    </div>
+
+
+                    <div class="assistant-sub">
+                        Voice control will be added later.
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         BOTTOM NAVIGATION
+         ===================================================== -->
+
+    <div id="navigation">
+
+
+        <button
+            class="nav-button active"
+            onclick="goToPage(0)"
+        >
+
+            <span class="nav-dot"></span>
+
+            <span class="nav-label">
+                Home
+            </span>
+
+        </button>
+
+
+        <button
+            class="nav-button"
+            onclick="goToPage(1)"
+        >
+
+            <span class="nav-dot"></span>
+
+            <span class="nav-label">
+                Weather
+            </span>
+
+        </button>
+
+
+        <button
+            class="nav-button"
+            onclick="goToPage(2)"
+        >
+
+            <span class="nav-dot"></span>
+
+            <span class="nav-label">
+                Calculator
+            </span>
+
+        </button>
+
+
+        <button
+            class="nav-button"
+            onclick="goToPage(3)"
+        >
+
+            <span class="nav-dot"></span>
+
+            <span class="nav-label">
+                Assistant
+            </span>
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   PAGE NAVIGATION
+   ========================================================= */
+
+var currentPage = 0;
+
+var totalPages = 4;
+
+var pages =
+    document.getElementById("pages");
+
+
+var navigationButtons =
+    document.getElementsByClassName(
+        "nav-button"
+    );
+
+
+var touchStartX = 0;
+
+var touchStartY = 0;
+
+
+/* ---------------------------------------------------------
+   GO TO PAGE
+   --------------------------------------------------------- */
+
+function goToPage(page) {
+
+
+    if (page < 0) {
+
+        page = 0;
+
+    }
+
+
+    if (page >= totalPages) {
+
+        page =
+            totalPages - 1;
+
+    }
+
+
+    currentPage = page;
+
+
+    updatePage();
+
+}
+
+
+/* ---------------------------------------------------------
+   UPDATE PAGE POSITION
+   --------------------------------------------------------- */
+
+function updatePage() {
+
+
+    pages.style.transform =
+        "translateX(-" +
+        (currentPage * 25) +
+        "%)";
+
+
+    for (
+        var i = 0;
+        i < navigationButtons.length;
+        i++
+    ) {
+
+        navigationButtons[i].className =
+            "nav-button";
+
+    }
+
+
+    navigationButtons[currentPage].className =
+        "nav-button active";
+
+
+    /*
+       Automatically bring the selected
+       navigation button into view.
+    */
+
+    navigationButtons[currentPage]
+        .scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "nearest",
+
+            inline: "center"
+
+        });
+
+}
+
+
+/* =========================================================
+   TOUCH SWIPING
+   ========================================================= */
+
+document.addEventListener(
+    "touchstart",
+    function(e) {
+
+
+        touchStartX =
+            e.touches[0].clientX;
+
+
+        touchStartY =
+            e.touches[0].clientY;
+
+
+    },
+    false
+);
+
+
+document.addEventListener(
+    "touchend",
+    function(e) {
+
+
+        var touchEndX =
+            e.changedTouches[0].clientX;
+
+
+        var touchEndY =
+            e.changedTouches[0].clientY;
+
+
+        var differenceX =
+            touchStartX -
+            touchEndX;
+
+
+        var differenceY =
+            touchStartY -
+            touchEndY;
+
+
+        /*
+           Only count the gesture as a
+           horizontal swipe if:
+
+           1. It moved at least 50px
+           2. Horizontal movement was
+              greater than vertical movement
+        */
+
+        if (
+            Math.abs(differenceX) > 50 &&
+            Math.abs(differenceX) >
+            Math.abs(differenceY)
+        ) {
+
+
+            if (differenceX > 0) {
+
+                goToPage(
+                    currentPage + 1
+                );
+
+            }
+
+            else {
+
+                goToPage(
+                    currentPage - 1
+                );
+
+            }
+
+        }
+
+
+    },
+    false
+);
+
+
+/* =========================================================
+   CLOCK
+   ========================================================= */
+
+function updateClock() {
+
+
+    var now =
+        new Date();
+
+
+    var hours =
+        now.getHours();
+
+
+    var minutes =
+        now.getMinutes();
+
+
+    /*
+       Convert 24-hour time
+       into 12-hour time.
+    */
+
+    var displayHours =
+        hours % 12;
+
+
+    if (displayHours === 0) {
+
+        displayHours = 12;
+
+    }
+
+
+    var minuteText =
+        minutes < 10
+            ? "0" + minutes
+            : minutes;
+
+
+    var period =
+        hours >= 12
+            ? "PM"
+            : "AM";
+
+
+    document.getElementById(
+        "time"
+    ).innerHTML =
+
+        displayHours +
+        ":" +
+        minuteText +
+        " " +
+        period;
+
+
+    /*
+       Australian date formatting.
+    */
+
+    var dateOptions = {
+
+        weekday: "long",
+
+        day: "numeric",
+
+        month: "long"
+
+    };
+
+
+    document.getElementById(
+        "date"
+    ).innerHTML =
+
+        now.toLocaleDateString(
+            "en-AU",
+            dateOptions
+        );
+
+
+    updateGreeting(hours);
+
+}
+
+
+/* =========================================================
+   GREETING SYSTEM
+   ========================================================= */
+
+function updateGreeting(hours) {
+
+
+    var greetings;
+
+
+    /*
+       5:00 AM - 8:59 AM
+       MORNING
+    */
+
+    if (
+        hours >= 5 &&
+        hours < 9
+    ) {
+
+
+        greetings = [
+
+            "Good morning.",
+
+            "Morning.",
+
+            "Good morning! Ready for the day?",
+
+            "Rise and shine.",
+
+            "Morning. Let's get started."
+
+        ];
+
+    }
+
+
+    /*
+       9:00 AM - 5:59 PM
+       DAY
+    */
+
+    else if (
+        hours >= 9 &&
+        hours < 18
+    ) {
+
+
+        greetings = [
+
+            "Good afternoon.",
+
+            "Hello.",
+
+            "Hope you're having a good day.",
+
+            "Good to see you.",
+
+            "What are we doing today?"
+
+        ];
+
+    }
+
+
+    /*
+       6:00 PM - 8:59 PM
+       EVENING
+    */
+
+    else if (
+        hours >= 18 &&
+        hours < 21
+    ) {
+
+
+        greetings = [
+
+            "Good evening.",
+
+            "Evening.",
+
+            "Hope you had a good day.",
+
+            "Good evening. What's happening?",
+
+            "Welcome back."
+
+        ];
+
+    }
+
+
+    /*
+       9:00 PM - 4:59 AM
+       NIGHT
+    */
+
+    else {
+
+
+        greetings = [
+
+            "Good night.",
+
+            "It's getting late.",
+
+            "Still awake?",
+
+            "Good night. Don't stay up too late.",
+
+            "Late night mode activated."
+
+        ];
+
+    }
+
+
+    /*
+       Pick a deterministic greeting based
+       on the date + hour.
+
+       This means it doesn't change every
+       second while the clock updates.
+    */
+
+    var now =
+        new Date();
+
+
+    var index =
+
+        (
+            now.getDate() +
+            now.getHours()
+        )
+        %
+        greetings.length;
+
+
+    document.getElementById(
+        "greeting"
+    ).innerHTML =
+
+        greetings[index];
+
+}
+
+
+/* =========================================================
+   WEATHER
+   ========================================================= */
+
+/*
+   Approximate centre of Gwelup, WA.
+
+   Open-Meteo will use these coordinates
+   to generate the local forecast.
+*/
+
+var GWELUP_LAT =
+    -31.872;
+
+
+var GWELUP_LON =
+    115.799;
+
+
+/* ---------------------------------------------------------
+   WEATHER CODE → DESCRIPTION
+   --------------------------------------------------------- */
+
+function weatherDescription(code) {
+
+
+    if (code === 0)
+        return "Clear sky";
+
+
+    if (code === 1)
+        return "Mainly clear";
+
+
+    if (code === 2)
+        return "Partly cloudy";
+
+
+    if (code === 3)
+        return "Overcast";
+
+
+    if (
+        code === 45 ||
+        code === 48
+    )
+        return "Fog";
+
+
+    if (
+        code >= 51 &&
+        code <= 57
+    )
+        return "Drizzle";
+
+
+    if (
+        code >= 61 &&
+        code <= 67
+    )
+        return "Rain";
+
+
+    if (
+        code >= 71 &&
+        code <= 77
+    )
+        return "Snow";
+
+
+    if (
+        code >= 80 &&
+        code <= 82
+    )
+        return "Rain showers";
+
+
+    if (
+        code >= 85 &&
+        code <= 86
+    )
+        return "Snow showers";
+
+
+    if (
+        code >= 95 &&
+        code <= 99
+    )
+        return "Thunderstorm";
+
+
+    return "Unknown";
+
+}
+
+
+/* ---------------------------------------------------------
+   FORMAT HOUR
+   --------------------------------------------------------- */
+
+function formatHour(timeString) {
+
+
+    var date =
+        new Date(timeString);
+
+
+    var hours =
+        date.getHours();
+
+
+    var displayHours =
+        hours % 12;
+
+
+    if (displayHours === 0) {
+
+        displayHours = 12;
+
+    }
+
+
+    var period =
+        hours >= 12
+            ? "PM"
+            : "AM";
+
+
+    return (
+
+        displayHours +
+        " " +
+        period
+
+    );
+
+}
+
+
+/* ---------------------------------------------------------
+   LOAD WEATHER
+   --------------------------------------------------------- */
+
+function loadWeather() {
+
+
+    var url =
+
+        "https://api.open-meteo.com/v1/forecast" +
+
+        "?latitude=" +
+        GWELUP_LAT +
+
+        "&longitude=" +
+        GWELUP_LON +
+
+        "&current=" +
+
+        "temperature_2m," +
+        "apparent_temperature," +
+        "precipitation," +
+        "weather_code," +
+        "wind_speed_10m" +
+
+        "&hourly=" +
+
+        "temperature_2m," +
+        "precipitation_probability," +
+        "weather_code" +
+
+        "&daily=" +
+
+        "temperature_2m_max," +
+        "temperature_2m_min," +
+        "precipitation_probability_max," +
+        "weather_code" +
+
+        "&timezone=" +
+        "Australia%2FPerth" +
+
+        "&forecast_days=7";
+
+
+    fetch(url)
+
+        .then(function(response) {
+
+            return response.json();
+
+        })
+
+
+        .then(function(data) {
+
+
+            var current =
+                data.current;
+
+
+            var daily =
+                data.daily;
+
+
+            var hourly =
+                data.hourly;
+
+
+            /*
+               HOME WEATHER
+            */
+
+            document.getElementById(
+                "homeWeather"
+            ).innerHTML =
+
+                Math.round(
+                    current.temperature_2m
+                ) +
+
+                "°C · " +
+
+                weatherDescription(
+                    current.weather_code
+                );
+
+
+            /*
+               WEATHER PAGE
+            */
+
+            document.getElementById(
+                "weatherTemp"
+            ).innerHTML =
+
+                Math.round(
+                    current.temperature_2m
+                ) +
+
+                "°C";
+
+
+            document.getElementById(
+                "weatherCondition"
+            ).innerHTML =
+
+                weatherDescription(
+                    current.weather_code
+                );
+
+
+            document.getElementById(
+                "weatherFeels"
+            ).innerHTML =
+
+                "Feels like " +
+
+                Math.round(
+                    current.apparent_temperature
+                ) +
+
+                "°C";
+
+
+            document.getElementById(
+                "wind"
+            ).innerHTML =
+
+                Math.round(
+                    current.wind_speed_10m
+                ) +
+
+                " km/h";
+
+
+            document.getElementById(
+                "rainChance"
+            ).innerHTML =
+
+                daily
+                    .precipitation_probability_max[0] +
+
+                "%";
+
+
+            document.getElementById(
+                "high"
+            ).innerHTML =
+
+                Math.round(
+                    daily.temperature_2m_max[0]
+                ) +
+
+                "°";
+
+
+            /*
+               HOURLY FORECAST
+            */
+
+            var hourlyContainer =
+                document.getElementById(
+                    "hourlyWeather"
+                );
+
+
+            hourlyContainer.innerHTML =
+                "";
+
+
+            var now =
+                new Date();
+
+
+            var shown = 0;
+
+
+            for (
+                var i = 0;
+
+                i < hourly.time.length &&
+                shown < 8;
+
+                i++
+            ) {
+
+
+                var hourDate =
+                    new Date(
+                        hourly.time[i]
+                    );
+
+
+                if (
+                    hourDate >= now
+                ) {
+
+
+                    var item =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    item.className =
+                        "hour";
+
+
+                    item.innerHTML =
+
+                        '<div class="hour-time">' +
+
+                        formatHour(
+                            hourly.time[i]
+                        ) +
+
+                        '</div>' +
+
+
+                        '<div class="hour-temp">' +
+
+                        Math.round(
+                            hourly.temperature_2m[i]
+                        ) +
+
+                        '°</div>' +
+
+
+                        '<div class="hour-rain">' +
+
+                        hourly
+                            .precipitation_probability[i] +
+
+                        '% rain</div>';
+
+
+                    hourlyContainer
+                        .appendChild(item);
+
+
+                    shown++;
+
+                }
+
+            }
+
+
+        })
+
+
+        .catch(function(error) {
+
+
+            console.log(
+                "Weather error:",
+                error
+            );
+
+
+            document.getElementById(
+                "homeWeather"
+            ).innerHTML =
+
+                "Weather unavailable";
+
+
+            document.getElementById(
+                "weatherCondition"
+            ).innerHTML =
+
+                "Unable to load weather";
+
+        });
+
+}
+
+
+/* =========================================================
+   CALCULATOR
+   ========================================================= */
+
+var calcValue = "";
+
+var calcOperator = "";
+
+var calcFirstNumber = "";
+
+var calcResetNext = false;
+
+
+/* ---------------------------------------------------------
+   DISPLAY
+   --------------------------------------------------------- */
+
+function updateCalcDisplay() {
+
+
+    var display =
+        document.getElementById(
+            "calcDisplay"
+        );
+
+
+    if (calcValue === "") {
+
+        display.innerHTML = "0";
+
+    }
+
+    else {
+
+        display.innerHTML =
+            calcValue;
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   NUMBER
+   --------------------------------------------------------- */
+
+function inputNumber(number) {
+
+
+    if (calcResetNext) {
+
+        calcValue = "";
+
+        calcResetNext = false;
+
+    }
+
+
+    calcValue += number;
+
+
+    updateCalcDisplay();
+
+}
+
+
+/* ---------------------------------------------------------
+   DECIMAL
+   --------------------------------------------------------- */
+
+function inputDecimal() {
+
+
+    if (calcResetNext) {
+
+        calcValue = "";
+
+        calcResetNext = false;
+
+    }
+
+
+    if (
+        calcValue.indexOf(".") === -1
+    ) {
+
+
+        if (calcValue === "") {
+
+            calcValue = "0";
+
+        }
+
+
+        calcValue += ".";
+
+    }
+
+
+    updateCalcDisplay();
+
+}
+
+
+/* ---------------------------------------------------------
+   OPERATOR
+   --------------------------------------------------------- */
+
+function inputOperator(operator) {
+
+
+    if (calcValue === "") {
+
+        return;
+
+    }
+
+
+    calcFirstNumber =
+        parseFloat(calcValue);
+
+
+    calcOperator =
+        operator;
+
+
+    calcResetNext =
+        true;
+
+}
+
+
+/* ---------------------------------------------------------
+   CALCULATE
+   --------------------------------------------------------- */
+
+function calculate() {
+
+
+    if (
+        calcOperator === "" ||
+        calcFirstNumber === "" ||
+        calcValue === ""
+    ) {
+
+        return;
+
+    }
+
+
+    var secondNumber =
+        parseFloat(calcValue);
+
+
+    var result = 0;
+
+
+    if (
+        calcOperator === "+"
+    ) {
+
+
+        result =
+            calcFirstNumber +
+            secondNumber;
+
+    }
+
+
+    else if (
+        calcOperator === "-"
+    ) {
+
+
+        result =
+            calcFirstNumber -
+            secondNumber;
+
+    }
+
+
+    else if (
+        calcOperator === "*"
+    ) {
+
+
+        result =
+            calcFirstNumber *
+            secondNumber;
+
+    }
+
+
+    else if (
+        calcOperator === "/"
+    ) {
+
+
+        if (
+            secondNumber === 0
+        ) {
+
+
+            calcValue =
+                "Error";
+
+
+            calcOperator =
+                "";
+
+
+            calcFirstNumber =
+                "";
+
+
+            calcResetNext =
+                true;
+
+
+            updateCalcDisplay();
+
+
+            return;
+
+        }
+
+
+        result =
+            calcFirstNumber /
+            secondNumber;
+
+    }
+
+
+    else if (
+        calcOperator === "%"
+    ) {
+
+
+        result =
+            calcFirstNumber %
+            secondNumber;
+
+    }
+
+
+    /*
+       Clean up floating point
+       precision errors.
+    */
+
+    result =
+
+        Math.round(
+            result * 100000000
+        )
+        /
+        100000000;
+
+
+    calcValue =
+        String(result);
+
+
+    calcOperator =
+        "";
+
+
+    calcFirstNumber =
+        "";
+
+
+    calcResetNext =
+        true;
+
+
+    updateCalcDisplay();
+
+}
+
+
+/* ---------------------------------------------------------
+   CLEAR
+   --------------------------------------------------------- */
+
+function clearCalc() {
+
+
+    calcValue = "";
+
+    calcOperator = "";
+
+    calcFirstNumber = "";
+
+    calcResetNext = false;
+
+
+    updateCalcDisplay();
+
+}
+
+
+/* ---------------------------------------------------------
+   BACKSPACE
+   --------------------------------------------------------- */
+
+function backspace() {
+
+
+    if (calcResetNext) {
+
+        return;
+
+    }
+
+
+    calcValue =
+
+        calcValue.substring(
+            0,
+            calcValue.length - 1
+        );
+
+
+    updateCalcDisplay();
+
+}
+
+
+/* =========================================================
+   START APPLICATION
+   ========================================================= */
+
+updateClock();
+
+
+setInterval(
+    updateClock,
+    1000
+);
+
+
+loadWeather();
+
+
+/*
+   Refresh weather every 10 minutes.
+*/
+
+setInterval(
+    loadWeather,
+    600000
+);
+
+</script>
+
+
+</body>
+
+</html>
