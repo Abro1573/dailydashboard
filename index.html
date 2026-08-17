@@ -6,11 +6,19 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no">
 
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="Home">
+<meta name="apple-mobile-web-app-capable"
+      content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style"
+      content="black">
+
+<meta name="apple-mobile-web-app-title"
+      content="Home Assistant">
 
 <title>Home Assistant</title>
 
@@ -22,11 +30,14 @@
    ========================================================= */
 
 * {
+
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 
     -webkit-tap-highlight-color: transparent;
+
 }
+
 
 html,
 body {
@@ -40,6 +51,7 @@ body {
     overflow: hidden;
 
     background: #101010;
+
     color: #ffffff;
 
     font-family:
@@ -47,10 +59,14 @@ body {
         BlinkMacSystemFont,
         Arial,
         sans-serif;
+
 }
 
+
 button {
+
     font-family: inherit;
+
 }
 
 
@@ -64,11 +80,12 @@ button {
     height: 100%;
 
     overflow: hidden;
+
 }
 
 
 /* =========================================================
-   PAGE SYSTEM
+   PAGES
    ========================================================= */
 
 #pages {
@@ -83,8 +100,12 @@ button {
     -webkit-transform: translateX(0);
     transform: translateX(0);
 
-    -webkit-transition: -webkit-transform 0.35s ease;
-    transition: transform 0.35s ease;
+    -webkit-transition:
+        -webkit-transform 0.35s ease;
+
+    transition:
+        transform 0.35s ease;
+
 }
 
 
@@ -105,15 +126,18 @@ button {
     overflow-y: auto;
 
     -webkit-overflow-scrolling: touch;
+
 }
 
 
 .page-content {
 
     width: 100%;
+
     max-width: 600px;
 
     margin: 0 auto;
+
 }
 
 
@@ -134,11 +158,14 @@ button {
     justify-content: center;
 
     text-align: center;
+
 }
 
 
 .home-inner {
+
     width: 100%;
+
 }
 
 
@@ -151,6 +178,7 @@ button {
     font-weight: 300;
 
     letter-spacing: -3px;
+
 }
 
 
@@ -161,6 +189,7 @@ button {
     font-size: 20px;
 
     color: #999999;
+
 }
 
 
@@ -171,6 +200,7 @@ button {
     font-size: 27px;
 
     font-weight: 400;
+
 }
 
 
@@ -181,6 +211,7 @@ button {
     font-size: 19px;
 
     color: #aaaaaa;
+
 }
 
 
@@ -195,6 +226,7 @@ button {
     font-weight: 400;
 
     margin-bottom: 25px;
+
 }
 
 
@@ -207,14 +239,7 @@ button {
     padding: 22px;
 
     margin-bottom: 15px;
-}
 
-
-.large-number {
-
-    font-size: 54px;
-
-    font-weight: 300;
 }
 
 
@@ -223,6 +248,7 @@ button {
     color: #999999;
 
     font-size: 17px;
+
 }
 
 
@@ -233,6 +259,7 @@ button {
     background: #2c2c2c;
 
     margin: 18px 0;
+
 }
 
 
@@ -247,6 +274,7 @@ button {
     padding:
         25px
         0;
+
 }
 
 
@@ -255,6 +283,7 @@ button {
     font-size: 70px;
 
     font-weight: 300;
+
 }
 
 
@@ -263,6 +292,7 @@ button {
     font-size: 24px;
 
     margin-top: 8px;
+
 }
 
 
@@ -271,25 +301,26 @@ button {
     color: #999999;
 
     margin-top: 8px;
+
 }
 
 
 .weather-grid {
 
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
+    width: 100%;
 
-    margin-left: -5px;
-    margin-right: -5px;
+    overflow: hidden;
+
 }
 
 
 .weather-stat {
 
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-    flex: 1;
+    width: 31.33%;
+
+    float: left;
+
+    margin-right: 3%;
 
     background: #1b1b1b;
 
@@ -299,11 +330,15 @@ button {
         18px
         10px;
 
-    margin:
-        0
-        5px;
-
     text-align: center;
+
+}
+
+
+.weather-stat:last-child {
+
+    margin-right: 0;
+
 }
 
 
@@ -314,17 +349,19 @@ button {
     font-size: 14px;
 
     margin-bottom: 8px;
+
 }
 
 
 .stat-value {
 
     font-size: 20px;
+
 }
 
 
 /* =========================================================
-   HOURLY WEATHER
+   HOURLY
    ========================================================= */
 
 .hour-row {
@@ -338,6 +375,7 @@ button {
     padding-bottom: 5px;
 
     -webkit-overflow-scrolling: touch;
+
 }
 
 
@@ -359,6 +397,7 @@ button {
     margin-right: 10px;
 
     text-align: center;
+
 }
 
 
@@ -367,6 +406,7 @@ button {
     color: #888888;
 
     font-size: 13px;
+
 }
 
 
@@ -377,6 +417,7 @@ button {
     margin:
         8px
         0;
+
 }
 
 
@@ -385,6 +426,7 @@ button {
     color: #777777;
 
     font-size: 12px;
+
 }
 
 
@@ -399,6 +441,7 @@ button {
     max-width: 400px;
 
     margin: 0 auto;
+
 }
 
 
@@ -425,45 +468,42 @@ button {
     overflow: hidden;
 
     white-space: nowrap;
+
 }
 
 
 /*
-   IMPORTANT:
-   iOS 9 Safari does not support CSS Grid.
+   OLD SAFARI SAFE CALCULATOR
 
-   The calculator therefore uses flexbox.
+   Four explicit columns.
 */
-
-.calc-buttons {
-
-    width: 100%;
-
-    overflow: hidden;
-}
-
 
 .calc-row {
 
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
-
     width: 100%;
 
+    height: 65px;
+
     margin-bottom: 9px;
+
+    overflow: hidden;
+
 }
 
 
 .calc-button {
 
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-    flex: 1;
+    display: block;
+
+    float: left;
+
+    width: 23.5%;
 
     height: 65px;
 
-    min-width: 0;
+    margin-right: 2%;
+
+    padding: 0;
 
     border: none;
 
@@ -471,18 +511,19 @@ button {
 
     background: #242424;
 
-    color: white;
+    color: #ffffff;
 
     font-size: 24px;
 
-    margin-right: 9px;
-
     outline: none;
+
 }
 
 
 .calc-button:last-child {
+
     margin-right: 0;
+
 }
 
 
@@ -491,27 +532,39 @@ button {
     background: #3a3a3a;
 
     -webkit-transform: scale(0.97);
+
     transform: scale(0.97);
+
 }
 
 
 .calc-button.operator {
 
     background: #303030;
-}
 
-
-.calc-button.equals {
-
-    background: #ffffff;
-
-    color: #111111;
 }
 
 
 .calc-button.clear {
 
     background: #333333;
+
+}
+
+
+/*
+   The equals button occupies
+   two normal button widths.
+*/
+
+.calc-button.equals {
+
+    width: 49%;
+
+    background: #ffffff;
+
+    color: #111111;
+
 }
 
 
@@ -524,6 +577,7 @@ button {
     text-align: center;
 
     margin-top: 80px;
+
 }
 
 
@@ -555,12 +609,14 @@ button {
     font-size: 18px;
 
     color: #888888;
+
 }
 
 
 .assistant-text {
 
     font-size: 25px;
+
 }
 
 
@@ -571,11 +627,12 @@ button {
     color: #777777;
 
     font-size: 16px;
+
 }
 
 
 /* =========================================================
-   BOTTOM NAVIGATION
+   NAVIGATION
    ========================================================= */
 
 #navigation {
@@ -586,14 +643,18 @@ button {
 
     left: 50%;
 
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
+    -webkit-transform:
+        translateX(-50%);
+
+    transform:
+        translateX(-50%);
 
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
 
-    max-width: calc(100% - 30px);
+    max-width:
+        calc(100% - 30px);
 
     padding: 6px;
 
@@ -606,8 +667,13 @@ button {
     overflow-x: auto;
 
     -webkit-overflow-scrolling: touch;
+
 }
 
+
+/*
+   NO DOTS.
+*/
 
 .nav-button {
 
@@ -628,23 +694,21 @@ button {
 
     outline: none;
 
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
-
-    -webkit-align-items: center;
-    align-items: center;
-
     font-size: 14px;
 
     white-space: nowrap;
+
 }
 
 
 .nav-button:active {
 
-    -webkit-transform: scale(0.96);
-    transform: scale(0.96);
+    -webkit-transform:
+        scale(0.96);
+
+    transform:
+        scale(0.96);
+
 }
 
 
@@ -653,24 +717,7 @@ button {
     background: #ffffff;
 
     color: #111111;
-}
 
-
-.nav-dot {
-
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: currentColor;
-
-    margin-right: 7px;
-}
-
-
-.nav-label {
-    display: inline-block;
 }
 
 
@@ -681,34 +728,55 @@ button {
 @media (max-width: 500px) {
 
     .time {
+
         font-size: 55px;
+
     }
 
 
     .greeting {
+
         font-size: 23px;
+
     }
 
 
     .page-title {
+
         font-size: 30px;
+
     }
 
 
     .weather-temp {
+
         font-size: 60px;
+
     }
 
 
     .page {
+
         padding-left: 18px;
+
         padding-right: 18px;
+
     }
 
 
     .calc-button {
+
         height: 60px;
+
         font-size: 22px;
+
+    }
+
+
+    .calc-row {
+
+        height: 60px;
+
     }
 
 }
@@ -731,25 +799,46 @@ button {
      HOME
      ===================================================== -->
 
-<section class="page" id="home">
+<section
+    class="page"
+    id="home"
+>
+
 
 <div class="home-inner">
 
-<div class="time" id="time">
+
+<div
+    class="time"
+    id="time"
+>
 12:00 PM
 </div>
 
-<div class="date" id="date">
+
+<div
+    class="date"
+    id="date"
+>
 Loading...
 </div>
 
-<div class="greeting" id="greeting">
+
+<div
+    class="greeting"
+    id="greeting"
+>
 Hello.
 </div>
 
-<div class="home-weather" id="homeWeather">
+
+<div
+    class="home-weather"
+    id="homeWeather"
+>
 Loading weather...
 </div>
+
 
 </div>
 
@@ -762,7 +851,9 @@ Loading weather...
 
 <section class="page">
 
+
 <div class="page-content">
+
 
 <div class="page-title">
 Weather
@@ -771,17 +862,30 @@ Weather
 
 <div class="card weather-main">
 
-<div class="weather-temp" id="weatherTemp">
+
+<div
+    class="weather-temp"
+    id="weatherTemp"
+>
 --
 </div>
 
-<div class="weather-condition" id="weatherCondition">
+
+<div
+    class="weather-condition"
+    id="weatherCondition"
+>
 Loading...
 </div>
 
-<div class="weather-feels" id="weatherFeels">
+
+<div
+    class="weather-feels"
+    id="weatherFeels"
+>
 --
 </div>
+
 
 </div>
 
@@ -795,7 +899,10 @@ Loading...
 Rain
 </div>
 
-<div class="stat-value" id="rainChance">
+<div
+    class="stat-value"
+    id="rainChance"
+>
 --
 </div>
 
@@ -808,7 +915,10 @@ Rain
 Wind
 </div>
 
-<div class="stat-value" id="wind">
+<div
+    class="stat-value"
+    id="wind"
+>
 --
 </div>
 
@@ -821,7 +931,10 @@ Wind
 High
 </div>
 
-<div class="stat-value" id="high">
+<div
+    class="stat-value"
+    id="high"
+>
 --
 </div>
 
@@ -831,19 +944,30 @@ High
 </div>
 
 
-<div class="card" style="margin-top:15px">
+<div
+    class="card"
+    style="margin-top:15px"
+>
+
 
 <div class="secondary">
 Next few hours
 </div>
 
+
 <div class="divider"></div>
 
-<div id="hourlyWeather" class="hour-row">
+
+<div
+    class="hour-row"
+    id="hourlyWeather"
+>
 Loading...
 </div>
 
+
 </div>
+
 
 </div>
 
@@ -856,7 +980,9 @@ Loading...
 
 <section class="page">
 
+
 <div class="page-content">
+
 
 <div class="page-title">
 Calculator
@@ -866,148 +992,198 @@ Calculator
 <div class="calculator">
 
 
-<div class="calc-display" id="calcDisplay">
+<div
+    class="calc-display"
+    id="calcDisplay"
+>
 0
 </div>
 
 
-<div class="calc-buttons">
-
-
-<!-- ROW 1 -->
-
 <div class="calc-row">
 
-<button class="calc-button clear"
-onclick="clearCalc()">
+
+<button
+    class="calc-button clear"
+    onclick="clearCalc()"
+>
 C
 </button>
 
-<button class="calc-button"
-onclick="backspace()">
+
+<button
+    class="calc-button"
+    onclick="backspace()"
+>
 DEL
 </button>
 
-<button class="calc-button operator"
-onclick="inputOperator('%')">
+
+<button
+    class="calc-button operator"
+    onclick="inputOperator('%')"
+>
 %
 </button>
 
-<button class="calc-button operator"
-onclick="inputOperator('/')">
+
+<button
+    class="calc-button operator"
+    onclick="inputOperator('/')"
+>
 ÷
 </button>
 
+
 </div>
 
 
-<!-- ROW 2 -->
-
 <div class="calc-row">
 
-<button class="calc-button"
-onclick="inputNumber('7')">
+
+<button
+    class="calc-button"
+    onclick="inputNumber('7')"
+>
 7
 </button>
 
-<button class="calc-button"
-onclick="inputNumber('8')">
+
+<button
+    class="calc-button"
+    onclick="inputNumber('8')"
+>
 8
 </button>
 
-<button class="calc-button"
-onclick="inputNumber('9')">
+
+<button
+    class="calc-button"
+    onclick="inputNumber('9')"
+>
 9
 </button>
 
-<button class="calc-button operator"
-onclick="inputOperator('*')">
+
+<button
+    class="calc-button operator"
+    onclick="inputOperator('*')"
+>
 ×
 </button>
 
+
 </div>
 
 
-<!-- ROW 3 -->
-
 <div class="calc-row">
 
-<button class="calc-button"
-onclick="inputNumber('4')">
+
+<button
+    class="calc-button"
+    onclick="inputNumber('4')"
+>
 4
 </button>
 
-<button class="calc-button"
-onclick="inputNumber('5')">
+
+<button
+    class="calc-button"
+    onclick="inputNumber('5')"
+>
 5
 </button>
 
-<button class="calc-button"
-onclick="inputNumber('6')">
+
+<button
+    class="calc-button"
+    onclick="inputNumber('6')"
+>
 6
 </button>
 
-<button class="calc-button operator"
-onclick="inputOperator('-')">
+
+<button
+    class="calc-button operator"
+    onclick="inputOperator('-')"
+>
 −
 </button>
 
+
 </div>
 
 
-<!-- ROW 4 -->
-
 <div class="calc-row">
 
-<button class="calc-button"
-onclick="inputNumber('1')">
+
+<button
+    class="calc-button"
+    onclick="inputNumber('1')"
+>
 1
 </button>
 
-<button class="calc-button"
-onclick="inputNumber('2')">
+
+<button
+    class="calc-button"
+    onclick="inputNumber('2')"
+>
 2
 </button>
 
-<button class="calc-button"
-onclick="inputNumber('3')">
+
+<button
+    class="calc-button"
+    onclick="inputNumber('3')"
+>
 3
 </button>
 
-<button class="calc-button operator"
-onclick="inputOperator('+')">
+
+<button
+    class="calc-button operator"
+    onclick="inputOperator('+')"
+>
 +
 </button>
 
+
 </div>
 
-
-<!-- ROW 5 -->
 
 <div class="calc-row">
 
-<button class="calc-button"
-onclick="inputNumber('0')">
+
+<button
+    class="calc-button"
+    onclick="inputNumber('0')"
+>
 0
 </button>
 
-<button class="calc-button"
-onclick="inputDecimal()">
+
+<button
+    class="calc-button"
+    onclick="inputDecimal()"
+>
 .
 </button>
 
-<button class="calc-button equals"
-style="flex: 2; -webkit-flex: 2;"
-onclick="calculate()">
+
+<button
+    class="calc-button equals"
+    onclick="calculate()"
+>
 =
 </button>
 
-</div>
-
 
 </div>
 
+
 </div>
+
 
 </div>
 
@@ -1020,7 +1196,9 @@ onclick="calculate()">
 
 <section class="page">
 
+
 <div class="page-content">
+
 
 <div class="page-title">
 Assistant
@@ -1029,19 +1207,24 @@ Assistant
 
 <div class="assistant">
 
+
 <div class="assistant-circle">
 Ready
 </div>
+
 
 <div class="assistant-text">
 Your assistant is ready.
 </div>
 
+
 <div class="assistant-sub">
 Voice control will be added later.
 </div>
 
+
 </div>
+
 
 </div>
 
@@ -1058,51 +1241,35 @@ Voice control will be added later.
 <div id="navigation">
 
 
-<button class="nav-button active"
-onclick="goToPage(0)">
-
-<span class="nav-dot"></span>
-
-<span class="nav-label">
+<button
+    class="nav-button active"
+    onclick="goToPage(0)"
+>
 Home
-</span>
-
 </button>
 
 
-<button class="nav-button"
-onclick="goToPage(1)">
-
-<span class="nav-dot"></span>
-
-<span class="nav-label">
+<button
+    class="nav-button"
+    onclick="goToPage(1)"
+>
 Weather
-</span>
-
 </button>
 
 
-<button class="nav-button"
-onclick="goToPage(2)">
-
-<span class="nav-dot"></span>
-
-<span class="nav-label">
+<button
+    class="nav-button"
+    onclick="goToPage(2)"
+>
 Calculator
-</span>
-
 </button>
 
 
-<button class="nav-button"
-onclick="goToPage(3)">
-
-<span class="nav-dot"></span>
-
-<span class="nav-label">
+<button
+    class="nav-button"
+    onclick="goToPage(3)"
+>
 Assistant
-</span>
-
 </button>
 
 
@@ -1126,16 +1293,14 @@ var pages =
     document.getElementById("pages");
 
 var navigationButtons =
-    document.getElementsByClassName("nav-button");
+    document.getElementsByClassName(
+        "nav-button"
+    );
 
 var touchStartX = 0;
 
 var touchStartY = 0;
 
-
-/* =========================================================
-   GO TO PAGE
-   ========================================================= */
 
 function goToPage(page) {
 
@@ -1150,27 +1315,30 @@ function goToPage(page) {
     currentPage = page;
 
     updatePage();
+
 }
 
 
-/* =========================================================
-   UPDATE PAGE
-   ========================================================= */
-
 function updatePage() {
+
+    var amount =
+        currentPage * 25;
+
 
     pages.style.webkitTransform =
         "translateX(-" +
-        (currentPage * 25) +
+        amount +
         "%)";
+
 
     pages.style.transform =
         "translateX(-" +
-        (currentPage * 25) +
+        amount +
         "%)";
 
 
     var i;
+
 
     for (
         i = 0;
@@ -1187,32 +1355,11 @@ function updatePage() {
     navigationButtons[currentPage].className =
         "nav-button active";
 
-
-    /*
-       Old Safari does not support the
-       modern scrollIntoView options object.
-
-       Simple scrollIntoView is supported.
-    */
-
-    try {
-
-        navigationButtons[currentPage]
-            .scrollIntoView(false);
-
-    }
-
-    catch (e) {
-
-        /* Ignore old Safari errors */
-
-    }
-
 }
 
 
 /* =========================================================
-   TOUCH SWIPING
+   SWIPING
    ========================================================= */
 
 document.addEventListener(
@@ -1226,8 +1373,10 @@ document.addEventListener(
             return;
         }
 
+
         touchStartX =
             e.touches[0].clientX;
+
 
         touchStartY =
             e.touches[0].clientY;
@@ -1248,15 +1397,19 @@ document.addEventListener(
             return;
         }
 
+
         var touchEndX =
             e.changedTouches[0].clientX;
+
 
         var touchEndY =
             e.changedTouches[0].clientY;
 
+
         var differenceX =
             touchStartX -
             touchEndX;
+
 
         var differenceY =
             touchStartY -
@@ -1269,7 +1422,9 @@ document.addEventListener(
             Math.abs(differenceY)
         ) {
 
-            if (differenceX > 0) {
+            if (
+                differenceX > 0
+            ) {
 
                 goToPage(
                     currentPage + 1
@@ -1298,10 +1453,13 @@ document.addEventListener(
 
 function updateClock() {
 
-    var now = new Date();
+    var now =
+        new Date();
+
 
     var hours =
         now.getHours();
+
 
     var minutes =
         now.getMinutes();
@@ -1311,8 +1469,12 @@ function updateClock() {
         hours % 12;
 
 
-    if (displayHours === 0) {
+    if (
+        displayHours === 0
+    ) {
+
         displayHours = 12;
+
     }
 
 
@@ -1338,13 +1500,6 @@ function updateClock() {
         " " +
         period;
 
-
-    /*
-       Manual date formatting.
-
-       This avoids relying on newer
-       Intl/date formatting behaviour.
-    */
 
     var weekdays = [
 
@@ -1377,7 +1532,9 @@ function updateClock() {
     ];
 
 
-    var dateText =
+    document.getElementById(
+        "date"
+    ).innerHTML =
 
         weekdays[now.getDay()] +
         ", " +
@@ -1386,12 +1543,8 @@ function updateClock() {
         months[now.getMonth()];
 
 
-    document.getElementById(
-        "date"
-    ).innerHTML = dateText;
-
-
     updateGreeting(hours);
+
 }
 
 
@@ -1508,6 +1661,7 @@ function updateGreeting(hours) {
     ).innerHTML =
 
         greetings[index];
+
 }
 
 
@@ -1515,9 +1669,12 @@ function updateGreeting(hours) {
    WEATHER
    ========================================================= */
 
-var GWELUP_LAT = -31.872;
+var GWELUP_LAT =
+    -31.872;
 
-var GWELUP_LON = 115.799;
+
+var GWELUP_LON =
+    115.799;
 
 
 /* =========================================================
@@ -1526,7 +1683,11 @@ var GWELUP_LON = 115.799;
 
 function weatherDescription(code) {
 
-    code = parseInt(code, 10);
+    code =
+        parseInt(
+            code,
+            10
+        );
 
 
     if (code === 0)
@@ -1595,38 +1756,32 @@ function weatherDescription(code) {
 
 
     return "Unknown";
+
 }
 
 
 /* =========================================================
-   FORMAT HOUR
+   FORMAT WEATHER HOUR
    ========================================================= */
 
-function formatHour(hourString) {
-
-    /*
-       Open-Meteo gives the time in local
-       Perth time because timezone is specified.
-
-       Instead of using new Date("YYYY-MM-DD HH:MM"),
-       manually extract the hour.
-
-       This is much safer on old Safari.
-    */
+function formatHour(timeString) {
 
     var parts =
-        hourString.split("T");
+        timeString.split("T");
 
 
-    var timePart =
-        parts.length > 1
-            ? parts[1]
-            : hourString;
+    if (
+        parts.length < 2
+    ) {
+
+        return "--";
+
+    }
 
 
     var hour =
         parseInt(
-            timePart.substring(0, 2),
+            parts[1].substring(0, 2),
             10
         );
 
@@ -1635,26 +1790,394 @@ function formatHour(hourString) {
         hour % 12;
 
 
-    if (displayHour === 0) {
+    if (
+        displayHour === 0
+    ) {
+
         displayHour = 12;
+
     }
 
 
-    var period =
-        hour >= 12
-            ? "PM"
-            : "AM";
+    return (
 
+        displayHour +
+        " " +
+        (
+            hour >= 12
+                ? "PM"
+                : "AM"
+        )
 
-    return displayHour + " " + period;
+    );
+
 }
 
 
 /* =========================================================
-   WEATHER HTTP REQUEST
+   WEATHER ERROR
+   ========================================================= */
+
+function weatherError(message) {
+
+    document.getElementById(
+        "homeWeather"
+    ).innerHTML =
+        message;
+
+
+    document.getElementById(
+        "weatherTemp"
+    ).innerHTML =
+        "--";
+
+
+    document.getElementById(
+        "weatherCondition"
+    ).innerHTML =
+        message;
+
+
+    document.getElementById(
+        "weatherFeels"
+    ).innerHTML =
+        "--";
+
+
+    document.getElementById(
+        "wind"
+    ).innerHTML =
+        "--";
+
+
+    document.getElementById(
+        "rainChance"
+    ).innerHTML =
+        "--";
+
+
+    document.getElementById(
+        "high"
+    ).innerHTML =
+        "--";
+
+
+    document.getElementById(
+        "hourlyWeather"
+    ).innerHTML =
+        "Unable to load forecast.";
+
+}
+
+
+/* =========================================================
+   DISPLAY WEATHER
+   ========================================================= */
+
+function displayWeather(data) {
+
+    if (
+        !data ||
+        !data.current ||
+        !data.daily ||
+        !data.hourly
+    ) {
+
+        weatherError(
+            "Invalid weather data"
+        );
+
+        return;
+
+    }
+
+
+    var current =
+        data.current;
+
+
+    var daily =
+        data.daily;
+
+
+    var hourly =
+        data.hourly;
+
+
+    var temperature =
+        Math.round(
+            parseFloat(
+                current.temperature_2m
+            )
+        );
+
+
+    var apparent =
+        Math.round(
+            parseFloat(
+                current.apparent_temperature
+            )
+        );
+
+
+    var wind =
+        Math.round(
+            parseFloat(
+                current.wind_speed_10m
+            )
+        );
+
+
+    document.getElementById(
+        "homeWeather"
+    ).innerHTML =
+
+        temperature +
+        "°C · " +
+
+        weatherDescription(
+            current.weather_code
+        );
+
+
+    document.getElementById(
+        "weatherTemp"
+    ).innerHTML =
+
+        temperature +
+        "°C";
+
+
+    document.getElementById(
+        "weatherCondition"
+    ).innerHTML =
+
+        weatherDescription(
+            current.weather_code
+        );
+
+
+    document.getElementById(
+        "weatherFeels"
+    ).innerHTML =
+
+        "Feels like " +
+        apparent +
+        "°C";
+
+
+    document.getElementById(
+        "wind"
+    ).innerHTML =
+
+        wind +
+        " km/h";
+
+
+    if (
+        daily.precipitation_probability_max
+    ) {
+
+        document.getElementById(
+            "rainChance"
+        ).innerHTML =
+
+            daily
+                .precipitation_probability_max[0] +
+            "%";
+
+    }
+
+
+    if (
+        daily.temperature_2m_max
+    ) {
+
+        document.getElementById(
+            "high"
+        ).innerHTML =
+
+            Math.round(
+                parseFloat(
+                    daily.temperature_2m_max[0]
+                )
+            ) +
+            "°";
+
+    }
+
+
+    var container =
+        document.getElementById(
+            "hourlyWeather"
+        );
+
+
+    container.innerHTML =
+        "";
+
+
+    var now =
+        new Date();
+
+
+    var shown = 0;
+
+    var i;
+
+
+    for (
+        i = 0;
+        i < hourly.time.length &&
+        shown < 8;
+        i++
+    ) {
+
+        var timeString =
+            hourly.time[i];
+
+
+        var parts =
+            timeString.split("T");
+
+
+        if (
+            parts.length < 2
+        ) {
+
+            continue;
+
+        }
+
+
+        var dateParts =
+            parts[0].split("-");
+
+
+        var timeParts =
+            parts[1].split(":");
+
+
+        if (
+            dateParts.length < 3 ||
+            timeParts.length < 2
+        ) {
+
+            continue;
+
+        }
+
+
+        var forecastDate =
+            new Date(
+                parseInt(dateParts[0], 10),
+                parseInt(dateParts[1], 10) - 1,
+                parseInt(dateParts[2], 10),
+                parseInt(timeParts[0], 10),
+                parseInt(timeParts[1], 10),
+                0
+            );
+
+
+        if (
+            forecastDate.getTime() <
+            now.getTime()
+        ) {
+
+            continue;
+
+        }
+
+
+        var item =
+            document.createElement(
+                "div"
+            );
+
+
+        item.className =
+            "hour";
+
+
+        item.innerHTML =
+
+            '<div class="hour-time">' +
+
+            formatHour(
+                timeString
+            ) +
+
+            '</div>' +
+
+            '<div class="hour-temp">' +
+
+            Math.round(
+                parseFloat(
+                    hourly.temperature_2m[i]
+                )
+            ) +
+
+            '°</div>' +
+
+            '<div class="hour-rain">' +
+
+            hourly
+                .precipitation_probability[i] +
+
+            '% rain</div>';
+
+
+        container.appendChild(
+            item
+        );
+
+
+        shown++;
+
+    }
+
+
+    if (
+        shown === 0
+    ) {
+
+        container.innerHTML =
+            "No hourly forecast available.";
+
+    }
+
+}
+
+
+/* =========================================================
+   LOAD WEATHER
    ========================================================= */
 
 function loadWeather() {
+
+    /*
+       If opened directly from Files,
+       the old Safari security model may
+       block this request.
+
+       We deliberately show a useful error
+       rather than leaving "Loading..."
+       forever.
+    */
+
+    if (
+        window.location.protocol ===
+        "file:"
+    ) {
+
+        weatherError(
+            "Open through HTTPS for weather"
+        );
+
+        return;
+
+    }
+
 
     var url =
 
@@ -1690,13 +2213,6 @@ function loadWeather() {
         "&forecast_days=7";
 
 
-    /*
-       IMPORTANT:
-       iOS 9 Safari does NOT have fetch().
-
-       XMLHttpRequest works on iOS 9.
-    */
-
     var request =
         new XMLHttpRequest();
 
@@ -1711,11 +2227,12 @@ function loadWeather() {
     request.onreadystatechange =
         function() {
 
-
             if (
                 request.readyState !== 4
             ) {
+
                 return;
+
             }
 
 
@@ -1725,10 +2242,11 @@ function loadWeather() {
             ) {
 
                 weatherError(
-                    "Weather unavailable"
+                    "Weather connection failed"
                 );
 
                 return;
+
             }
 
 
@@ -1751,10 +2269,14 @@ function loadWeather() {
                 );
 
                 return;
+
             }
 
 
-            displayWeather(data);
+            displayWeather(
+                data
+            );
+
         };
 
 
@@ -1762,7 +2284,17 @@ function loadWeather() {
         function() {
 
             weatherError(
-                "Weather unavailable"
+                "Weather connection failed"
+            );
+
+        };
+
+
+    request.ontimeout =
+        function() {
+
+            weatherError(
+                "Weather request timed out"
             );
 
         };
@@ -1777,410 +2309,8 @@ function loadWeather() {
     catch (e) {
 
         weatherError(
-            "Weather unavailable"
+            "Weather request blocked"
         );
-
-    }
-
-}
-
-
-/* =========================================================
-   WEATHER ERROR
-   ========================================================= */
-
-function weatherError(message) {
-
-    document.getElementById(
-        "homeWeather"
-    ).innerHTML = message;
-
-
-    document.getElementById(
-        "weatherTemp"
-    ).innerHTML = "--";
-
-
-    document.getElementById(
-        "weatherCondition"
-    ).innerHTML = message;
-
-
-    document.getElementById(
-        "weatherFeels"
-    ).innerHTML = "--";
-
-
-    document.getElementById(
-        "wind"
-    ).innerHTML = "--";
-
-
-    document.getElementById(
-        "rainChance"
-    ).innerHTML = "--";
-
-
-    document.getElementById(
-        "high"
-    ).innerHTML = "--";
-
-
-    document.getElementById(
-        "hourlyWeather"
-    ).innerHTML =
-        "Unable to load forecast.";
-}
-
-
-/* =========================================================
-   DISPLAY WEATHER
-   ========================================================= */
-
-function displayWeather(data) {
-
-    if (
-        !data ||
-        !data.current ||
-        !data.daily ||
-        !data.hourly
-    ) {
-
-        weatherError(
-            "Weather data unavailable"
-        );
-
-        return;
-    }
-
-
-    var current =
-        data.current;
-
-    var daily =
-        data.daily;
-
-    var hourly =
-        data.hourly;
-
-
-    /*
-       CURRENT TEMPERATURE
-    */
-
-    var temperature =
-        Math.round(
-            parseFloat(
-                current.temperature_2m
-            )
-        );
-
-
-    var apparent =
-        Math.round(
-            parseFloat(
-                current.apparent_temperature
-            )
-        );
-
-
-    var windSpeed =
-        Math.round(
-            parseFloat(
-                current.wind_speed_10m
-            )
-        );
-
-
-    /*
-       HOME
-    */
-
-    document.getElementById(
-        "homeWeather"
-    ).innerHTML =
-
-        temperature +
-        "°C · " +
-
-        weatherDescription(
-            current.weather_code
-        );
-
-
-    /*
-       WEATHER PAGE
-    */
-
-    document.getElementById(
-        "weatherTemp"
-    ).innerHTML =
-
-        temperature +
-        "°C";
-
-
-    document.getElementById(
-        "weatherCondition"
-    ).innerHTML =
-
-        weatherDescription(
-            current.weather_code
-        );
-
-
-    document.getElementById(
-        "weatherFeels"
-    ).innerHTML =
-
-        "Feels like " +
-        apparent +
-        "°C";
-
-
-    document.getElementById(
-        "wind"
-    ).innerHTML =
-
-        windSpeed +
-        " km/h";
-
-
-    /*
-       RAIN CHANCE
-    */
-
-    if (
-        daily.precipitation_probability_max &&
-        daily.precipitation_probability_max.length
-    ) {
-
-        document.getElementById(
-            "rainChance"
-        ).innerHTML =
-
-            daily
-                .precipitation_probability_max[0] +
-            "%";
-
-    }
-
-
-    /*
-       HIGH
-    */
-
-    if (
-        daily.temperature_2m_max &&
-        daily.temperature_2m_max.length
-    ) {
-
-        document.getElementById(
-            "high"
-        ).innerHTML =
-
-            Math.round(
-                parseFloat(
-                    daily.temperature_2m_max[0]
-                )
-            ) +
-            "°";
-
-    }
-
-
-    /*
-       HOURLY FORECAST
-    */
-
-    var hourlyContainer =
-        document.getElementById(
-            "hourlyWeather"
-        );
-
-
-    hourlyContainer.innerHTML = "";
-
-
-    /*
-       Find the current hour based on
-       the actual Perth-local hour.
-
-       This avoids parsing the full
-       date string with old Safari.
-    */
-
-    var now =
-        new Date();
-
-    var currentHour =
-        now.getHours();
-
-
-    var shown = 0;
-
-    var i;
-
-
-    for (
-        i = 0;
-        i < hourly.time.length &&
-        shown < 8;
-        i++
-    ) {
-
-        var timeString =
-            hourly.time[i];
-
-
-        /*
-           Extract the hour from:
-           YYYY-MM-DDTHH:MM
-        */
-
-        var timeParts =
-            timeString.split("T");
-
-
-        if (
-            timeParts.length < 2
-        ) {
-            continue;
-        }
-
-
-        var hourNumber =
-            parseInt(
-                timeParts[1].substring(0, 2),
-                10
-            );
-
-
-        /*
-           Extract the date.
-
-           Example:
-           2026-08-17
-        */
-
-        var datePart =
-            timeParts[0];
-
-
-        var dateParts =
-            datePart.split("-");
-
-
-        if (
-            dateParts.length < 3
-        ) {
-            continue;
-        }
-
-
-        var year =
-            parseInt(
-                dateParts[0],
-                10
-            );
-
-
-        var month =
-            parseInt(
-                dateParts[1],
-                10
-            );
-
-
-        var day =
-            parseInt(
-                dateParts[2],
-                10
-            );
-
-
-        var hourDate =
-            new Date(
-                year,
-                month - 1,
-                day,
-                hourNumber,
-                0,
-                0
-            );
-
-
-        /*
-           Only show future/current hours.
-        */
-
-        if (
-            hourDate.getTime() <
-            now.getTime()
-        ) {
-            continue;
-        }
-
-
-        var item =
-            document.createElement(
-                "div"
-            );
-
-
-        item.className =
-            "hour";
-
-
-        var temp =
-            Math.round(
-                parseFloat(
-                    hourly.temperature_2m[i]
-                )
-            );
-
-
-        var rain =
-            hourly.precipitation_probability[i];
-
-
-        item.innerHTML =
-
-            '<div class="hour-time">' +
-
-            formatHour(
-                timeString
-            ) +
-
-            '</div>' +
-
-            '<div class="hour-temp">' +
-
-            temp +
-
-            '°</div>' +
-
-            '<div class="hour-rain">' +
-
-            rain +
-
-            '% rain</div>';
-
-
-        hourlyContainer
-            .appendChild(item);
-
-
-        shown++;
-    }
-
-
-    if (
-        shown === 0
-    ) {
-
-        hourlyContainer.innerHTML =
-            "No hourly forecast available.";
 
     }
 
@@ -2199,10 +2329,6 @@ var calcFirstNumber = "";
 
 var calcResetNext = false;
 
-
-/* =========================================================
-   CALCULATOR DISPLAY
-   ========================================================= */
 
 function updateCalcDisplay() {
 
@@ -2227,12 +2353,9 @@ function updateCalcDisplay() {
             calcValue;
 
     }
+
 }
 
-
-/* =========================================================
-   NUMBER
-   ========================================================= */
 
 function inputNumber(number) {
 
@@ -2240,17 +2363,14 @@ function inputNumber(number) {
         calcResetNext
     ) {
 
-        calcValue = "";
+        calcValue =
+            "";
 
-        calcResetNext = false;
+        calcResetNext =
+            false;
 
     }
 
-
-    /*
-       Don't allow an absurdly long
-       number on the old iPad.
-    */
 
     if (
         calcValue.length >= 15
@@ -2261,16 +2381,14 @@ function inputNumber(number) {
     }
 
 
-    calcValue += number;
+    calcValue +=
+        number;
 
 
     updateCalcDisplay();
+
 }
 
-
-/* =========================================================
-   DECIMAL
-   ========================================================= */
 
 function inputDecimal() {
 
@@ -2278,9 +2396,11 @@ function inputDecimal() {
         calcResetNext
     ) {
 
-        calcValue = "";
+        calcValue =
+            "";
 
-        calcResetNext = false;
+        calcResetNext =
+            false;
 
     }
 
@@ -2293,23 +2413,22 @@ function inputDecimal() {
             calcValue === ""
         ) {
 
-            calcValue = "0";
+            calcValue =
+                "0";
 
         }
 
 
-        calcValue += ".";
+        calcValue +=
+            ".";
 
     }
 
 
     updateCalcDisplay();
+
 }
 
-
-/* =========================================================
-   OPERATOR
-   ========================================================= */
 
 function inputOperator(operator) {
 
@@ -2321,11 +2440,6 @@ function inputOperator(operator) {
 
     }
 
-
-    /*
-       If the user presses another
-       operator, replace the old one.
-    */
 
     if (
         calcOperator !== "" &&
@@ -2352,12 +2466,9 @@ function inputOperator(operator) {
 
     calcResetNext =
         true;
+
 }
 
-
-/* =========================================================
-   CALCULATE
-   ========================================================= */
 
 function calculate() {
 
@@ -2378,7 +2489,8 @@ function calculate() {
         );
 
 
-    var result = 0;
+    var result =
+        0;
 
 
     if (
@@ -2437,6 +2549,7 @@ function calculate() {
             updateCalcDisplay();
 
             return;
+
         }
 
 
@@ -2458,14 +2571,13 @@ function calculate() {
     }
 
 
-    /*
-       Reduce floating point noise.
-    */
-
     result =
+
         Math.round(
-            result * 100000000
-        ) /
+            result *
+            100000000
+        )
+        /
         100000000;
 
 
@@ -2484,31 +2596,29 @@ function calculate() {
 
 
     updateCalcDisplay();
+
 }
 
-
-/* =========================================================
-   CLEAR
-   ========================================================= */
 
 function clearCalc() {
 
-    calcValue = "";
+    calcValue =
+        "";
 
-    calcOperator = "";
+    calcOperator =
+        "";
 
-    calcFirstNumber = "";
+    calcFirstNumber =
+        "";
 
-    calcResetNext = false;
+    calcResetNext =
+        false;
 
 
     updateCalcDisplay();
+
 }
 
-
-/* =========================================================
-   BACKSPACE
-   ========================================================= */
 
 function backspace() {
 
@@ -2530,6 +2640,7 @@ function backspace() {
 
 
     updateCalcDisplay();
+
 }
 
 
@@ -2548,10 +2659,6 @@ setInterval(
 
 loadWeather();
 
-
-/*
-   Refresh weather every 10 minutes.
-*/
 
 setInterval(
     loadWeather,
