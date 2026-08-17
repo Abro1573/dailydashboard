@@ -6,10 +6,11 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-      content="width=device-width,
-               initial-scale=1.0,
-               maximum-scale=1.0,
-               user-scalable=no">
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Home">
 
 <title>Home Assistant</title>
 
@@ -21,7 +22,9 @@
    ========================================================= */
 
 * {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
+
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -46,14 +49,13 @@ body {
         sans-serif;
 }
 
-
 button {
     font-family: inherit;
 }
 
 
 /* =========================================================
-   APP / PAGE SYSTEM
+   APP
    ========================================================= */
 
 #app {
@@ -65,17 +67,24 @@ button {
 }
 
 
+/* =========================================================
+   PAGE SYSTEM
+   ========================================================= */
+
 #pages {
 
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
 
     width: 400%;
     height: 100%;
 
+    -webkit-transform: translateX(0);
     transform: translateX(0);
 
-    transition:
-        transform 0.35s ease;
+    -webkit-transition: -webkit-transform 0.35s ease;
+    transition: transform 0.35s ease;
 }
 
 
@@ -84,6 +93,7 @@ button {
     width: 25%;
     height: 100%;
 
+    -webkit-flex-shrink: 0;
     flex-shrink: 0;
 
     padding:
@@ -108,14 +118,19 @@ button {
 
 
 /* =========================================================
-   HOME PAGE
+   HOME
    ========================================================= */
 
 #home {
 
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
 
+    -webkit-align-items: center;
     align-items: center;
+
+    -webkit-justify-content: center;
     justify-content: center;
 
     text-align: center;
@@ -123,7 +138,6 @@ button {
 
 
 .home-inner {
-
     width: 100%;
 }
 
@@ -262,14 +276,19 @@ button {
 
 .weather-grid {
 
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
 
-    gap: 10px;
+    margin-left: -5px;
+    margin-right: -5px;
 }
 
 
 .weather-stat {
 
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
     flex: 1;
 
     background: #1b1b1b;
@@ -279,6 +298,10 @@ button {
     padding:
         18px
         10px;
+
+    margin:
+        0
+        5px;
 
     text-align: center;
 }
@@ -300,13 +323,17 @@ button {
 }
 
 
+/* =========================================================
+   HOURLY WEATHER
+   ========================================================= */
+
 .hour-row {
 
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
 
     overflow-x: auto;
-
-    gap: 10px;
 
     padding-bottom: 5px;
 
@@ -316,7 +343,10 @@ button {
 
 .hour {
 
-    min-width: 80px;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+
+    width: 80px;
 
     background: #1b1b1b;
 
@@ -325,6 +355,8 @@ button {
     padding:
         14px
         8px;
+
+    margin-right: 10px;
 
     text-align: center;
 }
@@ -388,24 +420,50 @@ button {
 
     font-size: 40px;
 
+    line-height: 55px;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+}
+
+
+/*
+   IMPORTANT:
+   iOS 9 Safari does not support CSS Grid.
+
+   The calculator therefore uses flexbox.
+*/
+
+.calc-buttons {
+
+    width: 100%;
+
     overflow: hidden;
 }
 
 
-.calc-buttons {
+.calc-row {
 
-    display: grid;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
 
-    grid-template-columns:
-        repeat(4, 1fr);
+    width: 100%;
 
-    gap: 9px;
+    margin-bottom: 9px;
 }
 
 
 .calc-button {
 
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+
     height: 65px;
+
+    min-width: 0;
 
     border: none;
 
@@ -417,13 +475,14 @@ button {
 
     font-size: 24px;
 
-    cursor: pointer;
+    margin-right: 9px;
+
+    outline: none;
 }
 
 
-.calc-button:hover {
-
-    background: #303030;
+.calc-button:last-child {
+    margin-right: 0;
 }
 
 
@@ -431,6 +490,7 @@ button {
 
     background: #3a3a3a;
 
+    -webkit-transform: scale(0.97);
     transform: scale(0.97);
 }
 
@@ -482,9 +542,14 @@ button {
         30px
         auto;
 
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
 
+    -webkit-align-items: center;
     align-items: center;
+
+    -webkit-justify-content: center;
     justify-content: center;
 
     font-size: 18px;
@@ -521,20 +586,18 @@ button {
 
     left: 50%;
 
-    transform:
-        translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
 
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
 
-    gap: 6px;
-
-    max-width:
-        calc(100% - 30px);
+    max-width: calc(100% - 30px);
 
     padding: 6px;
 
-    background:
-        rgba(25, 25, 25, 0.95);
+    background: #191919;
 
     border-radius: 14px;
 
@@ -543,19 +606,12 @@ button {
     overflow-x: auto;
 
     -webkit-overflow-scrolling: touch;
-
-    scrollbar-width: none;
-}
-
-
-#navigation::-webkit-scrollbar {
-
-    display: none;
 }
 
 
 .nav-button {
 
+    -webkit-flex-shrink: 0;
     flex-shrink: 0;
 
     border: none;
@@ -570,13 +626,14 @@ button {
 
     border-radius: 10px;
 
-    cursor: pointer;
+    outline: none;
 
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
 
+    -webkit-align-items: center;
     align-items: center;
-
-    gap: 7px;
 
     font-size: 14px;
 
@@ -584,18 +641,10 @@ button {
 }
 
 
-.nav-button:hover {
-
-    background: #292929;
-
-    color: #cccccc;
-}
-
-
 .nav-button:active {
 
-    transform:
-        scale(0.96);
+    -webkit-transform: scale(0.96);
+    transform: scale(0.96);
 }
 
 
@@ -615,42 +664,51 @@ button {
     border-radius: 50%;
 
     background: currentColor;
+
+    margin-right: 7px;
 }
 
 
 .nav-label {
-
     display: inline-block;
 }
 
 
 /* =========================================================
-   SMALL SCREEN ADJUSTMENTS
+   SMALL SCREEN
    ========================================================= */
 
 @media (max-width: 500px) {
 
     .time {
-
         font-size: 55px;
     }
 
 
     .greeting {
-
         font-size: 23px;
     }
 
 
     .page-title {
-
         font-size: 30px;
     }
 
 
     .weather-temp {
-
         font-size: 60px;
+    }
+
+
+    .page {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+
+    .calc-button {
+        height: 60px;
+        font-size: 22px;
     }
 
 }
@@ -666,498 +724,389 @@ button {
 <div id="app">
 
 
-    <!-- =====================================================
-         PAGE CONTAINER
-         ===================================================== -->
+<div id="pages">
 
-    <div id="pages">
 
+<!-- =====================================================
+     HOME
+     ===================================================== -->
 
-        <!-- =================================================
-             PAGE 1 — HOME
-             ================================================= -->
+<section class="page" id="home">
 
-        <section
-            class="page"
-            id="home"
-        >
+<div class="home-inner">
 
-            <div class="home-inner">
+<div class="time" id="time">
+12:00 PM
+</div>
 
+<div class="date" id="date">
+Loading...
+</div>
 
-                <div
-                    class="time"
-                    id="time"
-                >
-                    12:00 PM
-                </div>
+<div class="greeting" id="greeting">
+Hello.
+</div>
 
+<div class="home-weather" id="homeWeather">
+Loading weather...
+</div>
 
-                <div
-                    class="date"
-                    id="date"
-                >
-                    Loading...
-                </div>
+</div>
 
+</section>
 
-                <div
-                    class="greeting"
-                    id="greeting"
-                >
-                    Hello.
-                </div>
 
+<!-- =====================================================
+     WEATHER
+     ===================================================== -->
 
-                <div
-                    class="home-weather"
-                    id="homeWeather"
-                >
-                    Loading weather...
-                </div>
+<section class="page">
 
+<div class="page-content">
 
-            </div>
+<div class="page-title">
+Weather
+</div>
 
-        </section>
 
+<div class="card weather-main">
 
-        <!-- =================================================
-             PAGE 2 — WEATHER
-             ================================================= -->
+<div class="weather-temp" id="weatherTemp">
+--
+</div>
 
-        <section class="page">
+<div class="weather-condition" id="weatherCondition">
+Loading...
+</div>
 
+<div class="weather-feels" id="weatherFeels">
+--
+</div>
 
-            <div class="page-content">
+</div>
 
 
-                <div class="page-title">
-                    Weather
-                </div>
+<div class="weather-grid">
 
 
-                <!-- Current weather -->
+<div class="weather-stat">
 
-                <div class="card weather-main">
+<div class="stat-label">
+Rain
+</div>
 
+<div class="stat-value" id="rainChance">
+--
+</div>
 
-                    <div
-                        class="weather-temp"
-                        id="weatherTemp"
-                    >
-                        --
-                    </div>
+</div>
 
 
-                    <div
-                        class="weather-condition"
-                        id="weatherCondition"
-                    >
-                        Loading...
-                    </div>
+<div class="weather-stat">
 
+<div class="stat-label">
+Wind
+</div>
 
-                    <div
-                        class="weather-feels"
-                        id="weatherFeels"
-                    >
-                        --
-                    </div>
+<div class="stat-value" id="wind">
+--
+</div>
 
+</div>
 
-                </div>
 
+<div class="weather-stat">
 
-                <!-- Weather statistics -->
+<div class="stat-label">
+High
+</div>
 
-                <div class="weather-grid">
+<div class="stat-value" id="high">
+--
+</div>
 
+</div>
 
-                    <div class="weather-stat">
 
-                        <div class="stat-label">
-                            Rain
-                        </div>
+</div>
 
-                        <div
-                            class="stat-value"
-                            id="rainChance"
-                        >
-                            --
-                        </div>
 
-                    </div>
+<div class="card" style="margin-top:15px">
 
+<div class="secondary">
+Next few hours
+</div>
 
-                    <div class="weather-stat">
+<div class="divider"></div>
 
-                        <div class="stat-label">
-                            Wind
-                        </div>
+<div id="hourlyWeather" class="hour-row">
+Loading...
+</div>
 
-                        <div
-                            class="stat-value"
-                            id="wind"
-                        >
-                            --
-                        </div>
+</div>
 
-                    </div>
+</div>
 
+</section>
 
-                    <div class="weather-stat">
 
-                        <div class="stat-label">
-                            High
-                        </div>
+<!-- =====================================================
+     CALCULATOR
+     ===================================================== -->
 
-                        <div
-                            class="stat-value"
-                            id="high"
-                        >
-                            --
-                        </div>
+<section class="page">
 
-                    </div>
+<div class="page-content">
 
+<div class="page-title">
+Calculator
+</div>
 
-                </div>
 
+<div class="calculator">
 
-                <!-- Hourly forecast -->
 
-                <div
-                    class="card"
-                    style="margin-top:15px"
-                >
+<div class="calc-display" id="calcDisplay">
+0
+</div>
 
 
-                    <div class="secondary">
-                        Next few hours
-                    </div>
+<div class="calc-buttons">
 
 
-                    <div class="divider"></div>
+<!-- ROW 1 -->
 
+<div class="calc-row">
 
-                    <div
-                        class="hour-row"
-                        id="hourlyWeather"
-                    >
-                        Loading...
-                    </div>
+<button class="calc-button clear"
+onclick="clearCalc()">
+C
+</button>
 
+<button class="calc-button"
+onclick="backspace()">
+DEL
+</button>
 
-                </div>
+<button class="calc-button operator"
+onclick="inputOperator('%')">
+%
+</button>
 
+<button class="calc-button operator"
+onclick="inputOperator('/')">
+÷
+</button>
 
-            </div>
+</div>
 
-        </section>
 
+<!-- ROW 2 -->
 
-        <!-- =================================================
-             PAGE 3 — CALCULATOR
-             ================================================= -->
+<div class="calc-row">
 
-        <section class="page">
+<button class="calc-button"
+onclick="inputNumber('7')">
+7
+</button>
 
+<button class="calc-button"
+onclick="inputNumber('8')">
+8
+</button>
 
-            <div class="page-content">
+<button class="calc-button"
+onclick="inputNumber('9')">
+9
+</button>
 
+<button class="calc-button operator"
+onclick="inputOperator('*')">
+×
+</button>
 
-                <div class="page-title">
-                    Calculator
-                </div>
+</div>
 
 
-                <div class="calculator">
+<!-- ROW 3 -->
 
+<div class="calc-row">
 
-                    <div
-                        class="calc-display"
-                        id="calcDisplay"
-                    >
-                        0
-                    </div>
+<button class="calc-button"
+onclick="inputNumber('4')">
+4
+</button>
 
+<button class="calc-button"
+onclick="inputNumber('5')">
+5
+</button>
 
-                    <div class="calc-buttons">
+<button class="calc-button"
+onclick="inputNumber('6')">
+6
+</button>
 
+<button class="calc-button operator"
+onclick="inputOperator('-')">
+−
+</button>
 
-                        <button
-                            class="calc-button clear"
-                            onclick="clearCalc()"
-                        >
-                            C
-                        </button>
+</div>
 
 
-                        <button
-                            class="calc-button"
-                            onclick="backspace()"
-                        >
-                            DEL
-                        </button>
+<!-- ROW 4 -->
 
+<div class="calc-row">
 
-                        <button
-                            class="calc-button operator"
-                            onclick="inputOperator('%')"
-                        >
-                            %
-                        </button>
+<button class="calc-button"
+onclick="inputNumber('1')">
+1
+</button>
 
+<button class="calc-button"
+onclick="inputNumber('2')">
+2
+</button>
 
-                        <button
-                            class="calc-button operator"
-                            onclick="inputOperator('/')"
-                        >
-                            ÷
-                        </button>
+<button class="calc-button"
+onclick="inputNumber('3')">
+3
+</button>
 
+<button class="calc-button operator"
+onclick="inputOperator('+')">
++
+</button>
 
-                        <button
-                            class="calc-button"
-                            onclick="inputNumber('7')"
-                        >
-                            7
-                        </button>
+</div>
 
 
-                        <button
-                            class="calc-button"
-                            onclick="inputNumber('8')"
-                        >
-                            8
-                        </button>
+<!-- ROW 5 -->
 
+<div class="calc-row">
 
-                        <button
-                            class="calc-button"
-                            onclick="inputNumber('9')"
-                        >
-                            9
-                        </button>
+<button class="calc-button"
+onclick="inputNumber('0')">
+0
+</button>
 
+<button class="calc-button"
+onclick="inputDecimal()">
+.
+</button>
 
-                        <button
-                            class="calc-button operator"
-                            onclick="inputOperator('*')"
-                        >
-                            ×
-                        </button>
+<button class="calc-button equals"
+style="flex: 2; -webkit-flex: 2;"
+onclick="calculate()">
+=
+</button>
 
+</div>
 
-                        <button
-                            class="calc-button"
-                            onclick="inputNumber('4')"
-                        >
-                            4
-                        </button>
 
+</div>
 
-                        <button
-                            class="calc-button"
-                            onclick="inputNumber('5')"
-                        >
-                            5
-                        </button>
+</div>
 
+</div>
 
-                        <button
-                            class="calc-button"
-                            onclick="inputNumber('6')"
-                        >
-                            6
-                        </button>
+</section>
 
 
-                        <button
-                            class="calc-button operator"
-                            onclick="inputOperator('-')"
-                        >
-                            −
-                        </button>
+<!-- =====================================================
+     ASSISTANT
+     ===================================================== -->
 
+<section class="page">
 
-                        <button
-                            class="calc-button"
-                            onclick="inputNumber('1')"
-                        >
-                            1
-                        </button>
+<div class="page-content">
 
+<div class="page-title">
+Assistant
+</div>
 
-                        <button
-                            class="calc-button"
-                            onclick="inputNumber('2')"
-                        >
-                            2
-                        </button>
 
+<div class="assistant">
 
-                        <button
-                            class="calc-button"
-                            onclick="inputNumber('3')"
-                        >
-                            3
-                        </button>
+<div class="assistant-circle">
+Ready
+</div>
 
+<div class="assistant-text">
+Your assistant is ready.
+</div>
 
-                        <button
-                            class="calc-button operator"
-                            onclick="inputOperator('+')"
-                        >
-                            +
-                        </button>
+<div class="assistant-sub">
+Voice control will be added later.
+</div>
 
+</div>
 
-                        <button
-                            class="calc-button"
-                            onclick="inputNumber('0')"
-                        >
-                            0
-                        </button>
+</div>
 
+</section>
 
-                        <button
-                            class="calc-button"
-                            onclick="inputDecimal()"
-                        >
-                            .
-                        </button>
 
+</div>
 
-                        <button
-                            class="calc-button equals"
-                            style="grid-column: span 2"
-                            onclick="calculate()"
-                        >
-                            =
-                        </button>
 
+<!-- =====================================================
+     NAVIGATION
+     ===================================================== -->
 
-                    </div>
+<div id="navigation">
 
 
-                </div>
+<button class="nav-button active"
+onclick="goToPage(0)">
 
+<span class="nav-dot"></span>
 
-            </div>
+<span class="nav-label">
+Home
+</span>
 
-        </section>
+</button>
 
 
-        <!-- =================================================
-             PAGE 4 — ASSISTANT
-             ================================================= -->
+<button class="nav-button"
+onclick="goToPage(1)">
 
-        <section class="page">
+<span class="nav-dot"></span>
 
+<span class="nav-label">
+Weather
+</span>
 
-            <div class="page-content">
+</button>
 
 
-                <div class="page-title">
-                    Assistant
-                </div>
+<button class="nav-button"
+onclick="goToPage(2)">
 
+<span class="nav-dot"></span>
 
-                <div class="assistant">
+<span class="nav-label">
+Calculator
+</span>
 
+</button>
 
-                    <div class="assistant-circle">
-                        Ready
-                    </div>
 
+<button class="nav-button"
+onclick="goToPage(3)">
 
-                    <div class="assistant-text">
-                        Your assistant is ready.
-                    </div>
+<span class="nav-dot"></span>
 
+<span class="nav-label">
+Assistant
+</span>
 
-                    <div class="assistant-sub">
-                        Voice control will be added later.
-                    </div>
+</button>
 
 
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-    </div>
-
-
-    <!-- =====================================================
-         BOTTOM NAVIGATION
-         ===================================================== -->
-
-    <div id="navigation">
-
-
-        <button
-            class="nav-button active"
-            onclick="goToPage(0)"
-        >
-
-            <span class="nav-dot"></span>
-
-            <span class="nav-label">
-                Home
-            </span>
-
-        </button>
-
-
-        <button
-            class="nav-button"
-            onclick="goToPage(1)"
-        >
-
-            <span class="nav-dot"></span>
-
-            <span class="nav-label">
-                Weather
-            </span>
-
-        </button>
-
-
-        <button
-            class="nav-button"
-            onclick="goToPage(2)"
-        >
-
-            <span class="nav-dot"></span>
-
-            <span class="nav-label">
-                Calculator
-            </span>
-
-        </button>
-
-
-        <button
-            class="nav-button"
-            onclick="goToPage(3)"
-        >
-
-            <span class="nav-dot"></span>
-
-            <span class="nav-label">
-                Assistant
-            </span>
-
-        </button>
-
-
-    </div>
+</div>
 
 
 </div>
@@ -1176,54 +1125,44 @@ var totalPages = 4;
 var pages =
     document.getElementById("pages");
 
-
 var navigationButtons =
-    document.getElementsByClassName(
-        "nav-button"
-    );
-
+    document.getElementsByClassName("nav-button");
 
 var touchStartX = 0;
 
 var touchStartY = 0;
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    GO TO PAGE
-   --------------------------------------------------------- */
+   ========================================================= */
 
 function goToPage(page) {
 
-
     if (page < 0) {
-
         page = 0;
-
     }
-
 
     if (page >= totalPages) {
-
-        page =
-            totalPages - 1;
-
+        page = totalPages - 1;
     }
-
 
     currentPage = page;
 
-
     updatePage();
-
 }
 
 
-/* ---------------------------------------------------------
-   UPDATE PAGE POSITION
-   --------------------------------------------------------- */
+/* =========================================================
+   UPDATE PAGE
+   ========================================================= */
 
 function updatePage() {
 
+    pages.style.webkitTransform =
+        "translateX(-" +
+        (currentPage * 25) +
+        "%)";
 
     pages.style.transform =
         "translateX(-" +
@@ -1231,8 +1170,10 @@ function updatePage() {
         "%)";
 
 
+    var i;
+
     for (
-        var i = 0;
+        i = 0;
         i < navigationButtons.length;
         i++
     ) {
@@ -1248,20 +1189,24 @@ function updatePage() {
 
 
     /*
-       Automatically bring the selected
-       navigation button into view.
+       Old Safari does not support the
+       modern scrollIntoView options object.
+
+       Simple scrollIntoView is supported.
     */
 
-    navigationButtons[currentPage]
-        .scrollIntoView({
+    try {
 
-            behavior: "smooth",
+        navigationButtons[currentPage]
+            .scrollIntoView(false);
 
-            block: "nearest",
+    }
 
-            inline: "center"
+    catch (e) {
 
-        });
+        /* Ignore old Safari errors */
+
+    }
 
 }
 
@@ -1274,14 +1219,18 @@ document.addEventListener(
     "touchstart",
     function(e) {
 
+        if (
+            !e.touches ||
+            !e.touches.length
+        ) {
+            return;
+        }
 
         touchStartX =
             e.touches[0].clientX;
 
-
         touchStartY =
             e.touches[0].clientY;
-
 
     },
     false
@@ -1292,40 +1241,33 @@ document.addEventListener(
     "touchend",
     function(e) {
 
+        if (
+            !e.changedTouches ||
+            !e.changedTouches.length
+        ) {
+            return;
+        }
 
         var touchEndX =
             e.changedTouches[0].clientX;
 
-
         var touchEndY =
             e.changedTouches[0].clientY;
-
 
         var differenceX =
             touchStartX -
             touchEndX;
-
 
         var differenceY =
             touchStartY -
             touchEndY;
 
 
-        /*
-           Only count the gesture as a
-           horizontal swipe if:
-
-           1. It moved at least 50px
-           2. Horizontal movement was
-              greater than vertical movement
-        */
-
         if (
             Math.abs(differenceX) > 50 &&
             Math.abs(differenceX) >
             Math.abs(differenceY)
         ) {
-
 
             if (differenceX > 0) {
 
@@ -1345,7 +1287,6 @@ document.addEventListener(
 
         }
 
-
     },
     false
 );
@@ -1357,32 +1298,21 @@ document.addEventListener(
 
 function updateClock() {
 
-
-    var now =
-        new Date();
-
+    var now = new Date();
 
     var hours =
         now.getHours();
 
-
     var minutes =
         now.getMinutes();
 
-
-    /*
-       Convert 24-hour time
-       into 12-hour time.
-    */
 
     var displayHours =
         hours % 12;
 
 
     if (displayHours === 0) {
-
         displayHours = 12;
-
     }
 
 
@@ -1410,55 +1340,74 @@ function updateClock() {
 
 
     /*
-       Australian date formatting.
+       Manual date formatting.
+
+       This avoids relying on newer
+       Intl/date formatting behaviour.
     */
 
-    var dateOptions = {
+    var weekdays = [
 
-        weekday: "long",
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
 
-        day: "numeric",
+    ];
 
-        month: "long"
 
-    };
+    var months = [
+
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+
+    ];
+
+
+    var dateText =
+
+        weekdays[now.getDay()] +
+        ", " +
+        now.getDate() +
+        " " +
+        months[now.getMonth()];
 
 
     document.getElementById(
         "date"
-    ).innerHTML =
-
-        now.toLocaleDateString(
-            "en-AU",
-            dateOptions
-        );
+    ).innerHTML = dateText;
 
 
     updateGreeting(hours);
-
 }
 
 
 /* =========================================================
-   GREETING SYSTEM
+   GREETING
    ========================================================= */
 
 function updateGreeting(hours) {
 
-
     var greetings;
 
-
-    /*
-       5:00 AM - 8:59 AM
-       MORNING
-    */
 
     if (
         hours >= 5 &&
         hours < 9
     ) {
-
 
         greetings = [
 
@@ -1477,16 +1426,10 @@ function updateGreeting(hours) {
     }
 
 
-    /*
-       9:00 AM - 5:59 PM
-       DAY
-    */
-
     else if (
         hours >= 9 &&
         hours < 18
     ) {
-
 
         greetings = [
 
@@ -1505,16 +1448,10 @@ function updateGreeting(hours) {
     }
 
 
-    /*
-       6:00 PM - 8:59 PM
-       EVENING
-    */
-
     else if (
         hours >= 18 &&
         hours < 21
     ) {
-
 
         greetings = [
 
@@ -1533,13 +1470,7 @@ function updateGreeting(hours) {
     }
 
 
-    /*
-       9:00 PM - 4:59 AM
-       NIGHT
-    */
-
     else {
-
 
         greetings = [
 
@@ -1557,14 +1488,6 @@ function updateGreeting(hours) {
 
     }
 
-
-    /*
-       Pick a deterministic greeting based
-       on the date + hour.
-
-       This means it doesn't change every
-       second while the clock updates.
-    */
 
     var now =
         new Date();
@@ -1585,7 +1508,6 @@ function updateGreeting(hours) {
     ).innerHTML =
 
         greetings[index];
-
 }
 
 
@@ -1593,26 +1515,18 @@ function updateGreeting(hours) {
    WEATHER
    ========================================================= */
 
-/*
-   Approximate centre of Gwelup, WA.
+var GWELUP_LAT = -31.872;
 
-   Open-Meteo will use these coordinates
-   to generate the local forecast.
-*/
-
-var GWELUP_LAT =
-    -31.872;
+var GWELUP_LON = 115.799;
 
 
-var GWELUP_LON =
-    115.799;
-
-
-/* ---------------------------------------------------------
-   WEATHER CODE → DESCRIPTION
-   --------------------------------------------------------- */
+/* =========================================================
+   WEATHER DESCRIPTION
+   ========================================================= */
 
 function weatherDescription(code) {
+
+    code = parseInt(code, 10);
 
 
     if (code === 0)
@@ -1681,59 +1595,66 @@ function weatherDescription(code) {
 
 
     return "Unknown";
-
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    FORMAT HOUR
-   --------------------------------------------------------- */
+   ========================================================= */
 
-function formatHour(timeString) {
+function formatHour(hourString) {
+
+    /*
+       Open-Meteo gives the time in local
+       Perth time because timezone is specified.
+
+       Instead of using new Date("YYYY-MM-DD HH:MM"),
+       manually extract the hour.
+
+       This is much safer on old Safari.
+    */
+
+    var parts =
+        hourString.split("T");
 
 
-    var date =
-        new Date(timeString);
+    var timePart =
+        parts.length > 1
+            ? parts[1]
+            : hourString;
 
 
-    var hours =
-        date.getHours();
+    var hour =
+        parseInt(
+            timePart.substring(0, 2),
+            10
+        );
 
 
-    var displayHours =
-        hours % 12;
+    var displayHour =
+        hour % 12;
 
 
-    if (displayHours === 0) {
-
-        displayHours = 12;
-
+    if (displayHour === 0) {
+        displayHour = 12;
     }
 
 
     var period =
-        hours >= 12
+        hour >= 12
             ? "PM"
             : "AM";
 
 
-    return (
-
-        displayHours +
-        " " +
-        period
-
-    );
-
+    return displayHour + " " + period;
 }
 
 
-/* ---------------------------------------------------------
-   LOAD WEATHER
-   --------------------------------------------------------- */
+/* =========================================================
+   WEATHER HTTP REQUEST
+   ========================================================= */
 
 function loadWeather() {
-
 
     var url =
 
@@ -1749,7 +1670,6 @@ function loadWeather() {
 
         "temperature_2m," +
         "apparent_temperature," +
-        "precipitation," +
         "weather_code," +
         "wind_speed_10m" +
 
@@ -1762,245 +1682,507 @@ function loadWeather() {
         "&daily=" +
 
         "temperature_2m_max," +
-        "temperature_2m_min," +
         "precipitation_probability_max," +
         "weather_code" +
 
-        "&timezone=" +
-        "Australia%2FPerth" +
+        "&timezone=Australia%2FPerth" +
 
         "&forecast_days=7";
 
 
-    fetch(url)
+    /*
+       IMPORTANT:
+       iOS 9 Safari does NOT have fetch().
 
-        .then(function(response) {
+       XMLHttpRequest works on iOS 9.
+    */
 
-            return response.json();
-
-        })
-
-
-        .then(function(data) {
-
-
-            var current =
-                data.current;
+    var request =
+        new XMLHttpRequest();
 
 
-            var daily =
-                data.daily;
+    request.open(
+        "GET",
+        url,
+        true
+    );
 
 
-            var hourly =
-                data.hourly;
+    request.onreadystatechange =
+        function() {
 
 
-            /*
-               HOME WEATHER
-            */
-
-            document.getElementById(
-                "homeWeather"
-            ).innerHTML =
-
-                Math.round(
-                    current.temperature_2m
-                ) +
-
-                "°C · " +
-
-                weatherDescription(
-                    current.weather_code
-                );
-
-
-            /*
-               WEATHER PAGE
-            */
-
-            document.getElementById(
-                "weatherTemp"
-            ).innerHTML =
-
-                Math.round(
-                    current.temperature_2m
-                ) +
-
-                "°C";
-
-
-            document.getElementById(
-                "weatherCondition"
-            ).innerHTML =
-
-                weatherDescription(
-                    current.weather_code
-                );
-
-
-            document.getElementById(
-                "weatherFeels"
-            ).innerHTML =
-
-                "Feels like " +
-
-                Math.round(
-                    current.apparent_temperature
-                ) +
-
-                "°C";
-
-
-            document.getElementById(
-                "wind"
-            ).innerHTML =
-
-                Math.round(
-                    current.wind_speed_10m
-                ) +
-
-                " km/h";
-
-
-            document.getElementById(
-                "rainChance"
-            ).innerHTML =
-
-                daily
-                    .precipitation_probability_max[0] +
-
-                "%";
-
-
-            document.getElementById(
-                "high"
-            ).innerHTML =
-
-                Math.round(
-                    daily.temperature_2m_max[0]
-                ) +
-
-                "°";
-
-
-            /*
-               HOURLY FORECAST
-            */
-
-            var hourlyContainer =
-                document.getElementById(
-                    "hourlyWeather"
-                );
-
-
-            hourlyContainer.innerHTML =
-                "";
-
-
-            var now =
-                new Date();
-
-
-            var shown = 0;
-
-
-            for (
-                var i = 0;
-
-                i < hourly.time.length &&
-                shown < 8;
-
-                i++
+            if (
+                request.readyState !== 4
             ) {
-
-
-                var hourDate =
-                    new Date(
-                        hourly.time[i]
-                    );
-
-
-                if (
-                    hourDate >= now
-                ) {
-
-
-                    var item =
-                        document.createElement(
-                            "div"
-                        );
-
-
-                    item.className =
-                        "hour";
-
-
-                    item.innerHTML =
-
-                        '<div class="hour-time">' +
-
-                        formatHour(
-                            hourly.time[i]
-                        ) +
-
-                        '</div>' +
-
-
-                        '<div class="hour-temp">' +
-
-                        Math.round(
-                            hourly.temperature_2m[i]
-                        ) +
-
-                        '°</div>' +
-
-
-                        '<div class="hour-rain">' +
-
-                        hourly
-                            .precipitation_probability[i] +
-
-                        '% rain</div>';
-
-
-                    hourlyContainer
-                        .appendChild(item);
-
-
-                    shown++;
-
-                }
-
+                return;
             }
 
 
-        })
+            if (
+                request.status < 200 ||
+                request.status >= 300
+            ) {
+
+                weatherError(
+                    "Weather unavailable"
+                );
+
+                return;
+            }
 
 
-        .catch(function(error) {
+            var data;
 
 
-            console.log(
-                "Weather error:",
-                error
+            try {
+
+                data =
+                    JSON.parse(
+                        request.responseText
+                    );
+
+            }
+
+            catch (e) {
+
+                weatherError(
+                    "Weather data error"
+                );
+
+                return;
+            }
+
+
+            displayWeather(data);
+        };
+
+
+    request.onerror =
+        function() {
+
+            weatherError(
+                "Weather unavailable"
+            );
+
+        };
+
+
+    try {
+
+        request.send(null);
+
+    }
+
+    catch (e) {
+
+        weatherError(
+            "Weather unavailable"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   WEATHER ERROR
+   ========================================================= */
+
+function weatherError(message) {
+
+    document.getElementById(
+        "homeWeather"
+    ).innerHTML = message;
+
+
+    document.getElementById(
+        "weatherTemp"
+    ).innerHTML = "--";
+
+
+    document.getElementById(
+        "weatherCondition"
+    ).innerHTML = message;
+
+
+    document.getElementById(
+        "weatherFeels"
+    ).innerHTML = "--";
+
+
+    document.getElementById(
+        "wind"
+    ).innerHTML = "--";
+
+
+    document.getElementById(
+        "rainChance"
+    ).innerHTML = "--";
+
+
+    document.getElementById(
+        "high"
+    ).innerHTML = "--";
+
+
+    document.getElementById(
+        "hourlyWeather"
+    ).innerHTML =
+        "Unable to load forecast.";
+}
+
+
+/* =========================================================
+   DISPLAY WEATHER
+   ========================================================= */
+
+function displayWeather(data) {
+
+    if (
+        !data ||
+        !data.current ||
+        !data.daily ||
+        !data.hourly
+    ) {
+
+        weatherError(
+            "Weather data unavailable"
+        );
+
+        return;
+    }
+
+
+    var current =
+        data.current;
+
+    var daily =
+        data.daily;
+
+    var hourly =
+        data.hourly;
+
+
+    /*
+       CURRENT TEMPERATURE
+    */
+
+    var temperature =
+        Math.round(
+            parseFloat(
+                current.temperature_2m
+            )
+        );
+
+
+    var apparent =
+        Math.round(
+            parseFloat(
+                current.apparent_temperature
+            )
+        );
+
+
+    var windSpeed =
+        Math.round(
+            parseFloat(
+                current.wind_speed_10m
+            )
+        );
+
+
+    /*
+       HOME
+    */
+
+    document.getElementById(
+        "homeWeather"
+    ).innerHTML =
+
+        temperature +
+        "°C · " +
+
+        weatherDescription(
+            current.weather_code
+        );
+
+
+    /*
+       WEATHER PAGE
+    */
+
+    document.getElementById(
+        "weatherTemp"
+    ).innerHTML =
+
+        temperature +
+        "°C";
+
+
+    document.getElementById(
+        "weatherCondition"
+    ).innerHTML =
+
+        weatherDescription(
+            current.weather_code
+        );
+
+
+    document.getElementById(
+        "weatherFeels"
+    ).innerHTML =
+
+        "Feels like " +
+        apparent +
+        "°C";
+
+
+    document.getElementById(
+        "wind"
+    ).innerHTML =
+
+        windSpeed +
+        " km/h";
+
+
+    /*
+       RAIN CHANCE
+    */
+
+    if (
+        daily.precipitation_probability_max &&
+        daily.precipitation_probability_max.length
+    ) {
+
+        document.getElementById(
+            "rainChance"
+        ).innerHTML =
+
+            daily
+                .precipitation_probability_max[0] +
+            "%";
+
+    }
+
+
+    /*
+       HIGH
+    */
+
+    if (
+        daily.temperature_2m_max &&
+        daily.temperature_2m_max.length
+    ) {
+
+        document.getElementById(
+            "high"
+        ).innerHTML =
+
+            Math.round(
+                parseFloat(
+                    daily.temperature_2m_max[0]
+                )
+            ) +
+            "°";
+
+    }
+
+
+    /*
+       HOURLY FORECAST
+    */
+
+    var hourlyContainer =
+        document.getElementById(
+            "hourlyWeather"
+        );
+
+
+    hourlyContainer.innerHTML = "";
+
+
+    /*
+       Find the current hour based on
+       the actual Perth-local hour.
+
+       This avoids parsing the full
+       date string with old Safari.
+    */
+
+    var now =
+        new Date();
+
+    var currentHour =
+        now.getHours();
+
+
+    var shown = 0;
+
+    var i;
+
+
+    for (
+        i = 0;
+        i < hourly.time.length &&
+        shown < 8;
+        i++
+    ) {
+
+        var timeString =
+            hourly.time[i];
+
+
+        /*
+           Extract the hour from:
+           YYYY-MM-DDTHH:MM
+        */
+
+        var timeParts =
+            timeString.split("T");
+
+
+        if (
+            timeParts.length < 2
+        ) {
+            continue;
+        }
+
+
+        var hourNumber =
+            parseInt(
+                timeParts[1].substring(0, 2),
+                10
             );
 
 
-            document.getElementById(
-                "homeWeather"
-            ).innerHTML =
+        /*
+           Extract the date.
 
-                "Weather unavailable";
+           Example:
+           2026-08-17
+        */
+
+        var datePart =
+            timeParts[0];
 
 
-            document.getElementById(
-                "weatherCondition"
-            ).innerHTML =
+        var dateParts =
+            datePart.split("-");
 
-                "Unable to load weather";
 
-        });
+        if (
+            dateParts.length < 3
+        ) {
+            continue;
+        }
+
+
+        var year =
+            parseInt(
+                dateParts[0],
+                10
+            );
+
+
+        var month =
+            parseInt(
+                dateParts[1],
+                10
+            );
+
+
+        var day =
+            parseInt(
+                dateParts[2],
+                10
+            );
+
+
+        var hourDate =
+            new Date(
+                year,
+                month - 1,
+                day,
+                hourNumber,
+                0,
+                0
+            );
+
+
+        /*
+           Only show future/current hours.
+        */
+
+        if (
+            hourDate.getTime() <
+            now.getTime()
+        ) {
+            continue;
+        }
+
+
+        var item =
+            document.createElement(
+                "div"
+            );
+
+
+        item.className =
+            "hour";
+
+
+        var temp =
+            Math.round(
+                parseFloat(
+                    hourly.temperature_2m[i]
+                )
+            );
+
+
+        var rain =
+            hourly.precipitation_probability[i];
+
+
+        item.innerHTML =
+
+            '<div class="hour-time">' +
+
+            formatHour(
+                timeString
+            ) +
+
+            '</div>' +
+
+            '<div class="hour-temp">' +
+
+            temp +
+
+            '°</div>' +
+
+            '<div class="hour-rain">' +
+
+            rain +
+
+            '% rain</div>';
+
+
+        hourlyContainer
+            .appendChild(item);
+
+
+        shown++;
+    }
+
+
+    if (
+        shown === 0
+    ) {
+
+        hourlyContainer.innerHTML =
+            "No hourly forecast available.";
+
+    }
 
 }
 
@@ -2018,12 +2200,11 @@ var calcFirstNumber = "";
 var calcResetNext = false;
 
 
-/* ---------------------------------------------------------
-   DISPLAY
-   --------------------------------------------------------- */
+/* =========================================================
+   CALCULATOR DISPLAY
+   ========================================================= */
 
 function updateCalcDisplay() {
-
 
     var display =
         document.getElementById(
@@ -2031,9 +2212,12 @@ function updateCalcDisplay() {
         );
 
 
-    if (calcValue === "") {
+    if (
+        calcValue === ""
+    ) {
 
-        display.innerHTML = "0";
+        display.innerHTML =
+            "0";
 
     }
 
@@ -2043,18 +2227,18 @@ function updateCalcDisplay() {
             calcValue;
 
     }
-
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    NUMBER
-   --------------------------------------------------------- */
+   ========================================================= */
 
 function inputNumber(number) {
 
-
-    if (calcResetNext) {
+    if (
+        calcResetNext
+    ) {
 
         calcValue = "";
 
@@ -2063,22 +2247,36 @@ function inputNumber(number) {
     }
 
 
+    /*
+       Don't allow an absurdly long
+       number on the old iPad.
+    */
+
+    if (
+        calcValue.length >= 15
+    ) {
+
+        return;
+
+    }
+
+
     calcValue += number;
 
 
     updateCalcDisplay();
-
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    DECIMAL
-   --------------------------------------------------------- */
+   ========================================================= */
 
 function inputDecimal() {
 
-
-    if (calcResetNext) {
+    if (
+        calcResetNext
+    ) {
 
         calcValue = "";
 
@@ -2091,8 +2289,9 @@ function inputDecimal() {
         calcValue.indexOf(".") === -1
     ) {
 
-
-        if (calcValue === "") {
+        if (
+            calcValue === ""
+        ) {
 
             calcValue = "0";
 
@@ -2105,18 +2304,36 @@ function inputDecimal() {
 
 
     updateCalcDisplay();
-
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    OPERATOR
-   --------------------------------------------------------- */
+   ========================================================= */
 
 function inputOperator(operator) {
 
+    if (
+        calcValue === ""
+    ) {
 
-    if (calcValue === "") {
+        return;
+
+    }
+
+
+    /*
+       If the user presses another
+       operator, replace the old one.
+    */
+
+    if (
+        calcOperator !== "" &&
+        calcResetNext
+    ) {
+
+        calcOperator =
+            operator;
 
         return;
 
@@ -2124,7 +2341,9 @@ function inputOperator(operator) {
 
 
     calcFirstNumber =
-        parseFloat(calcValue);
+        parseFloat(
+            calcValue
+        );
 
 
     calcOperator =
@@ -2133,16 +2352,14 @@ function inputOperator(operator) {
 
     calcResetNext =
         true;
-
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    CALCULATE
-   --------------------------------------------------------- */
+   ========================================================= */
 
 function calculate() {
-
 
     if (
         calcOperator === "" ||
@@ -2156,7 +2373,9 @@ function calculate() {
 
 
     var secondNumber =
-        parseFloat(calcValue);
+        parseFloat(
+            calcValue
+        );
 
 
     var result = 0;
@@ -2165,7 +2384,6 @@ function calculate() {
     if (
         calcOperator === "+"
     ) {
-
 
         result =
             calcFirstNumber +
@@ -2178,7 +2396,6 @@ function calculate() {
         calcOperator === "-"
     ) {
 
-
         result =
             calcFirstNumber -
             secondNumber;
@@ -2189,7 +2406,6 @@ function calculate() {
     else if (
         calcOperator === "*"
     ) {
-
 
         result =
             calcFirstNumber *
@@ -2202,33 +2418,25 @@ function calculate() {
         calcOperator === "/"
     ) {
 
-
         if (
             secondNumber === 0
         ) {
 
-
             calcValue =
                 "Error";
-
 
             calcOperator =
                 "";
 
-
             calcFirstNumber =
                 "";
-
 
             calcResetNext =
                 true;
 
-
             updateCalcDisplay();
 
-
             return;
-
         }
 
 
@@ -2243,7 +2451,6 @@ function calculate() {
         calcOperator === "%"
     ) {
 
-
         result =
             calcFirstNumber %
             secondNumber;
@@ -2252,16 +2459,13 @@ function calculate() {
 
 
     /*
-       Clean up floating point
-       precision errors.
+       Reduce floating point noise.
     */
 
     result =
-
         Math.round(
             result * 100000000
-        )
-        /
+        ) /
         100000000;
 
 
@@ -2272,26 +2476,22 @@ function calculate() {
     calcOperator =
         "";
 
-
     calcFirstNumber =
         "";
-
 
     calcResetNext =
         true;
 
 
     updateCalcDisplay();
-
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    CLEAR
-   --------------------------------------------------------- */
+   ========================================================= */
 
 function clearCalc() {
-
 
     calcValue = "";
 
@@ -2303,18 +2503,18 @@ function clearCalc() {
 
 
     updateCalcDisplay();
-
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    BACKSPACE
-   --------------------------------------------------------- */
+   ========================================================= */
 
 function backspace() {
 
-
-    if (calcResetNext) {
+    if (
+        calcResetNext
+    ) {
 
         return;
 
@@ -2330,12 +2530,11 @@ function backspace() {
 
 
     updateCalcDisplay();
-
 }
 
 
 /* =========================================================
-   START APPLICATION
+   START
    ========================================================= */
 
 updateClock();
